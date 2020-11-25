@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
+
+:root {
+    --font : 'Montserrat', sans-serif;
+    --yellow : #ffb700;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    line-height: 1;
+    background-color: #e9e5ef;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Layout */
+* { font-family: 'Montserrat', sans-serif;}
+body { width: 100vw; height: 100vh; }
+section {max-width: 1400px; width: 100%; height: 100vh; margin: 0 auto;}
+
+/* * header * */
+header {width: 100%; padding: 40px 0; position: fixed; top: 0; left: 0; z-index:99;}
+nav {max-width: 1400px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;}
+nav > h1 {font-family: var(--font); font-weight: 900; font-size: 20px; display: flex; align-items: center;}
+nav > h1 > img {width: 30px; margin-right: 10px;}
+nav > ul {width: 35px; height: 22px;position: relative;}
+nav > ul > li {width: 60%; height: 4px; background-color: #000; border-radius: 2px; position: absolute;}
+nav > ul > li:first-child {top: 0; right: 0;}
+nav > ul > li:nth-child(2) {top: 50%; left: 50%; transform: translate(-50%, -50%);}
+nav > ul > li:last-child {bottom: 0; left: 0;}

@@ -1,0 +1,40 @@
+/* * Main * */
+body {overflow:hidden;}
+section.main {position: relative; top: 0; left: 0; display: flex;}
+div.left-area {position: relative; width: 40%; height: 100vh; display: flex; flex-direction: column; justify-content: space-between;}
+div.left-area > div.text-area > h2 {font-family: var(--font); font-weight: 200; font-size: 60px; padding-top: 160px; white-space: nowrap;}
+div.left-area > div.text-area > h2 > span {font-weight: 900; font-size: 70px; }
+div.left-area > div.text-area > p {font-size: 16px; margin-top: 30px; line-height: 1.4em;}
+
+div.left-area > div.video {margin-bottom: 80px;}
+div.left-area > div.video > h3 {font-family: var(--font); font-size: 25px; font-weight: 700; margin-bottom: 20px;}
+div.left-area > div.video > h3 > span {color: var(--yellow);}
+div.left-area > div.video > div.video-img {position: relative; width: 200px;}
+div.left-area > div.video > div.video-img > img {width: 200px; box-shadow: 3px 3px 10px #00000010;}
+div.left-area > div.video > div.video-img > div.play {width: 30px; height: 25px; background-color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);}
+
+div.right-area { height: 100vh; width: 60%; display: flex; justify-content:center;}
+div.right-area > div.cycle-wrap {width: 800px; min-width:800px; height:445px;align-self: flex-end; margin-bottom: 80px; position: relative;}
+div.right-area > div.cycle-wrap > img {width: 800px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+
+div.cycle-wrap > ul > li {position: absolute; width: 60px; height: 60px; background-color: var(--yellow); box-shadow: 10px 10px 10px #ffb70030; cursor: pointer; transition: .3s; padding:10px; overflow: hidden;}
+
+div.cycle-wrap > ul > li.saddle {top: 0; left: 120px;}
+div.cycle-wrap > ul > li.handdle {top: -10px; right: 150px;}
+div.cycle-wrap > ul > li.wheel {top: 180px; right: 0;}
+div.cycle-wrap > ul > li.chain {top: 280px; left: 48%;}
+
+div.cycle-wrap > ul > li > div.icon {height:40px; display:flex; align-items: center; cursor: pointer;}
+div.cycle-wrap > ul > li > div.icon > img {height: 40px; cursor: pointer;}
+div.cycle-wrap > ul > li.saddle > div.icon > img {width: 40px; transition:.3s;}
+div.cycle-wrap > ul > li.handdle > div.icon > img {width: 40px; }
+div.cycle-wrap > ul > li > div.icon > h2 {font-size: 25px; font-family: var(--font); font-weight: 900; margin-left: 20px; display: none; visibility:hidden; opacity: 0; transition:.3s;}
+
+div.compo-script { visibility: hidden; opacity: 0; display: flex; flex-direction:column;}
+div.compo-script > ul {list-style-type: disc; padding-left: 20px;}
+div.compo-script > ul > li {color: #fff; margin: 5px 0;}
+div.compo-script > h3 {margin: 10px 0;}
+div.cycle-wrap > ul > li.active { animation: component .3s ease; }
+
+
