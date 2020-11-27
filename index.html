@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="stylesheet" type="text/css" href="./css/products.css">
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
+    <script src="https://kit.fontawesome.com/9f55273fbb.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -303,10 +304,21 @@
             <div class="custom-area">
                 <div class="custom-wrap">
                     <img class="main-frame" src="./assets/black-frame.png" alt="bicycle frame">
-                    <img class="custom-wheel" src="./assets/wheel-type1.png" alt="custom wheel" >
-                    <img class="custom-wheel" src="./assets/wheel-type1.png" alt="custom wheel" >
-                    <img class="custom-handdle" src="./assets/handdle1.png" alt="custom handdle">
-                    <img class="custom-saddle" src="./assets/saddle1.png" alt="custom saddle">
+                    
+                    <img class="custom-wheel left type1 visible" src="./assets/wheel-type1.png" alt="custom wheel" >
+                    <img class="custom-wheel right type1 visible" src="./assets/wheel-type1.png" alt="custom wheel" > 
+                    <img class="custom-wheel left type2" src="./assets/wheel-type2.png" alt="custom wheel" >
+                    <img class="custom-wheel right type2" src="./assets/wheel-type2.png" alt="custom wheel" >
+                    <img class="custom-wheel left type3" src="./assets/wheel-type3.png" alt="custom wheel" >
+                    <img class="custom-wheel right type3" src="./assets/wheel-type3.png" alt="custom wheel" >
+
+                    <img class="custom-handdle type1 appear visible" src="./assets/handdle1.png" alt="custom handdle">
+                    <img class="custom-handdle type2" src="./assets/handdle2.png" alt="custom handdle">
+                    <img class="custom-handdle type3" src="./assets/handdle3.png" alt="custom handdle">
+
+                    <img class="custom-saddle type1 appear visible" src="./assets/saddle1.png" alt="custom saddle">
+                    <img class="custom-saddle type2" src="./assets/saddle2.png" alt="custom saddle">
+                    <img class="custom-saddle type3" src="./assets/saddle3.png" alt="custom saddle">
                 </div>
             </div>
         </article>
@@ -328,7 +340,7 @@
                 <div class="configure">
                     <h3>Configure</h3>
                     <ul>
-                        <li>
+                        <li class="confi-active">
                             <div class="icon-wrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 379.55 290.36">
                                     <g id="Layer_2" data-name="Layer 2">
@@ -364,7 +376,7 @@
                 <div class="component">
                     <h3>Saddle</h3>
                     <ul>
-                        <li>
+                        <li class="compo-active">
                             <div class="com-icon">
                                 <img src="./assets/saddle-icon1.png" alt="">
                             </div>
@@ -381,16 +393,28 @@
                         </li>
                     </ul>
                 </div>
-                <div class="save">Save</div>
+                <div class="save-btn">Save</div>
             </div>
             <div class="custom-list">
                 <h2>My Custom</h2>
-                <div class="save-list">
-                    
+                <div class="save-list-wrap">
+                    <ul></ul>
                 </div>
             </div>
         </article>
+
     </section>
+    <div class="save-pop-wrap">
+        <div class="save-pop-bg"></div>
+        <div class="save-pop">
+            <p>Set a name for your custom.</p>
+            <input type="text" class="save-input" id="save-input" name="save-input">
+            <div class="pop-btn-wrap">
+                <div class="pop-cancle-btn"> Cancle </div>
+                <div class="pop-save-btn"> Save </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
@@ -401,3 +425,22 @@
 </html>
 
 
+                        <!-- <li>
+                            
+                            <div class="save-box">
+                                <p class="save-name">my cus</p>
+                                <div class="check">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="custom-thumb">
+                                    <img class="save-frame" src="./assets/black-frame.png" alt="">
+                                    <img class="save-handdle type1" src="./assets/handdle1.png" alt="">
+                                    <img class="save-handdle type2" src="./assets/handdle2.png" alt="">
+                                    <img class="save-handdle type3" src="./assets/handdle3.png" alt=""> 
+                                    <img class="save-wheel" src="./assets/wheel-type1.png" alt="">
+                                </div>
+                            </div>
+                            <div class="delete-box">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </li> -->

@@ -341,6 +341,14 @@ detailNext.addEventListener('click', ()=>{
 
 
 
+
+
+
+
+
+
+
+
 // const magCursor = document.querySelector('div.magnifier-cursor');
 // const magnifier = document.querySelector('div.magnifier');
 // let isZoom = false;

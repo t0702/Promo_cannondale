@@ -1,6 +1,6 @@
 
 /* Products */
-section.products {display: flex; height: 75vh; max-height: 650px; min-height: 550px; position: relative; top: 55%; left: 50%; transform: translate(-50%, -50%); }
+section.products {display: flex; height: 75vh; max-height: 650px; min-height: 550px; position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); }
 
 article.info-left {width: 23%; height:100%; display: flex; flex-direction: column; justify-content: space-between; padding-right: 30px; z-index:9;}
 div.info-cycle {display: flex; flex-direction: column;}

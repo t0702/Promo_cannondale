@@ -108,4 +108,15 @@ const wheelBtn = [
     './assets/wheel-icon3.png'
 ]
 
-const componentBtns = [saddleBtn, handdleBtn, wheelBtn];
+const componentBtnArray = [saddleBtn, handdleBtn, wheelBtn];
+
+const handdleTypeSrc = [
+    './assets/handdle1.png',
+    './assets/handdle2.png',
+    './assets/handdle3.png'
+]
+const wheelTypeSrc = [
+    './assets/wheel-type1.png',
+    './assets/wheel-type2.png',
+    './assets/wheel-type3.png'
+];
