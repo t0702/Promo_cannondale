@@ -51,9 +51,12 @@ div.color > ul > li:nth-child(5) {background-color: #52816d;}
 div.color > ul > li:nth-child(6) {background-color: #1431ee;}
 div.color > ul > li:nth-child(7) {background-color: #fff; margin: 0;}
 
+
+
+
 div.configure > h3 {font-size: 20px; font-family: var(--font); font-weight: 900; margin-bottom: 20px;}
 div.configure > ul {display: flex;}
-div.configure > ul > li {width: 90px; height: 90px; margin-right: 20px; background-color: #f6f3fb; box-shadow: 3px 3px 10px #00000010; transition: .5s; cursor:pointer; display: flex; justify-content: center; align-items: center;}
+div.configure > ul > li {width: 90px; height: 90px; margin-right: 20px; background-color: #f6f3fb; box-shadow: 3px 3px 10px #00000010; transition: .5s; cursor:pointer; display: flex; justify-content: center; align-items: center; border-radius: 2px;}
 div.configure > ul > li:hover {background-color: var(--yellow); cursor:pointer; box-shadow: 3px 3px 10px #ffb70080;}
 div.configure > ul > li:last-child {margin: 0;}
 
@@ -96,30 +99,41 @@ div.configure > ul > li:hover .wheel-4 {fill: #fff;}
 
 div.component > h3 {font-size: 20px; font-family: var(--font); font-weight: 900; margin-bottom: 20px;}
 div.component > ul {display: flex;}
-div.component > ul > li {width: 90px; height: 90px; margin-right: 20px; background-color: #f6f3fb; box-shadow: 3px 3px 10px #00000010; transition: .3s; display: flex; justify-content: center; align-items: center; cursor:pointer;}
+div.component > ul > li {width: 90px; height: 90px; margin-right: 20px; background-color: #f6f3fb; border-radius: 2px; box-shadow: 3px 3px 10px #00000010; transition: .3s; display: flex; justify-content: center; align-items: center; cursor:pointer;}
 div.component > ul > li:last-child{margin: 0;}
 div.component > ul > li:hover {background-color: #fff;}
 div.component > ul > li > div.com-icon {width: 80%; height: 80%; display: flex; justify-content: center; align-items: center;}
 div.component > ul > li > div.com-icon > img {width: 90%; height: 90%; opacity: .3; transition: .3s; cursor:pointer; object-fit: contain;}
 div.component > ul > li:hover > div.com-icon > img {opacity: 1; cursor: pointer;}
 
-div.save-btn {width: 100%; height: 50px; background-color: #000; font-family: var(--font); color: #fff; font-weight: 900; font-size: 20px; line-height: 50px; text-align: center; cursor:pointer; }
+div.save-btn {width: 100%; height: 50px; background-color: #000; font-family: var(--font); color: #fff; font-weight: 900; font-size: 20px; line-height: 50px; text-align: center; border-radius: 2px; cursor:pointer; }
 
 
 /* Custom Save List */
 div.custom-list {min-width: 310px; padding: 0 20px; margin-left: 30px;}
 div.custom-list > h2 {font-size: 26px; font-family: var(--font); font-weight: 900; white-space: nowrap; margin: 20px 0 50px;}
+
+
+div.custom-list > div.null-custom { width: 100%; height: calc(100% - 96px); background-color: rgb(216, 214, 231); border-radius: 2px; display: flex; justify-content: center; align-items: center; text-align: center; }
+div.custom-list > div.null-custom > p {font-size: 20px; font-family: var(--font); font-weight: 700; color: #fff; animation: nullCustom .8s ease infinite alternate;}
+
+@keyframes nullCustom {
+    0% {opacity: 1;}
+    20% {opacity: 1;}
+    100% { opacity: 0;}
+}
+
+
 div.save-list-wrap {height: calc(100% - 96px); width: 100%;}
 div.save-list-wrap > ul {width: 100%; display: flex; flex-direction: column;}
-div.save-list-wrap > ul > li {height: 100px;margin-bottom: 20px; border-radius: 2px; display: flex;
-    /* border: 1px solid salmon;  */
+div.save-list-wrap > ul > li {height: 100px;margin-bottom: 20px; border-radius: 2px; display: flex; transition: .5s ease;
 }
 div.save-list-wrap > ul > li > div{transition: .3s;}
 div.save-list-wrap > ul > li > div.save-box{width: 100%; height: 100%; background-color: #fff; position: relative; border-radius: 2px; 
-    overflow: hidden;
+    overflow: hidden; cursor: pointer;
 }
 div.save-list-wrap > ul > li > div.save-box > p {position: absolute; top: 10px; right: 10px; font-weight: 700; font-family: var(--font);}
-div.save-box > div.check {position: absolute; bottom: 10px; right: 10px; width: 20px; height: 20px; background-color: var(--yellow); border-radius: 100%; display: flex; justify-content: center; align-items: center;}
+div.save-box > div.check {position: absolute; bottom: 10px; right: 10px; width: 20px; height: 20px; background-color: #999; border-radius: 100%; display: flex; justify-content: center; align-items: center;}
 div.save-box > div.check > svg {font-size: 10px;}
 div.save-box > div.check > svg > path {color: #fff;}
 
@@ -127,6 +141,7 @@ div.save-box > div.check > svg > path {color: #fff;}
 
 div.save-box > div.custom-thumb {position: absolute; top: 40px; left: -100px;}
 div.custom-thumb > img.save-frame {width: 200px; position: relative; z-index: 1;}
+div.custom-thumb > img.save-saddle {position: absolute; top: -14px; left: 36px; width: 42px;}
 div.custom-thumb > img.save-handdle {position: absolute;}
 div.custom-thumb > img.save-handdle.type1 {top: -18.5px; right: -6px; width: 50px;}
 div.custom-thumb > img.save-handdle.type2 {top: -26.5px; right: 26.7px; height: 30px;
@@ -151,13 +166,13 @@ div.save-pop-wrap > div.save-pop-bg {width: 100vw; height: 100vh; background-col
     visibility: hidden; opacity: 0;
 }
 div.save-pop-wrap > div.save-pop {width: 300px; height: 170px; background-color: #fff; border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; transform: translateY(50vh); transition: .3s;}
-div.save-pop-wrap > div.save-pop > p {font-size: 15px; font-family: var(--font); font-weight: 700;}
-div.save-pop-wrap > div.save-pop > input { border: 1px solid rgb(201, 201, 201); width: 80%; height: 35px; margin: 10px 0 20px; text-align: center; font-size: 15px; outline: none;}
-div.save-pop-wrap > div.save-pop > div.pop-btn-wrap {display: flex;}
-div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div {width: 90px; height: 30px; background-color: #000; border-radius: 2px; color: #fff; font-family: var(--font); font-size: 13px; font-weight: 700; text-align: center; line-height: 30px;
-}
-div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div:first-child {margin-right: 10px;}
-
+div.save-pop-wrap > div.save-pop > p:first-child {font-size: 15px; font-family: var(--font); font-weight: 700;}
+div.save-pop-wrap > div.save-pop > p:nth-child(3) {font-size: 13px; font-weight: 700;color: rgb(230, 29, 29); margin: 10px 0; visibility: hidden; opacity:0;}
+div.save-pop-wrap > div.save-pop > input { border: 1px solid rgb(201, 201, 201); width: 80%; height: 35px; margin-top: 20px; text-align: center; font-size: 15px; outline: none;}
+div.save-pop-wrap > div.save-pop > div.pop-btn-wrap {width: 80%; display: flex;}
+div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div {width: 48%; height: 30px; background-color: #000; border-radius: 2px; color: #fff; font-family: var(--font); font-size: 13px; font-weight: 700; text-align: center; line-height: 30px; cursor:pointer;}
+div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div:first-child {margin-right: 10px; background-color: #a2a2a2;}
+div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div:hover {background-color: var(--yellow);}
 
 
 

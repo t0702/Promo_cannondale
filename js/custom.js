@@ -29,6 +29,21 @@ const saveInput = document.querySelector('input.save-input');
 const saveListName = document.querySelector('p.save-name');
 const saveCheck = document.querySelector('div.check');
 
+const nullCustom = document.querySelector('div.null-custom');
+const warningMessage = document.querySelector('div.save-pop > p:nth-child(3)');
+const saveListWrap = document.querySelector('div.save-list-wrap > ul');
+const customAppear = document.getElementsByClassName('custom-appear');
+
+let saveListCard = document.querySelectorAll('div.save-list-wrap > ul > li');
+let saveBoxChk;
+let saveBox;
+let deleteBox;
+let saveFrame;
+let saveSaddle;
+let saveHanddle;
+let saveWheel;
+let id = 0;
+
 let colorIdx = 0;
 let saddleIdx = 0;
 let handdleIdx = 0;
@@ -60,9 +75,7 @@ for(let i = 0; i < configureBtns.length; i++){
         console.log('saddleIdx', saddleIdx);
         console.log('handdleIdx', handdleIdx);
         console.log('wheelIdx', wheelIdx);
-
     })
-
 }
 
 for(let z = 0; z < componentBtns.length; z++){
@@ -76,94 +89,36 @@ for(let z = 0; z < componentBtns.length; z++){
         componentBtns[z].classList.add('compo-active');
 
         // Saddle Change
-        if( configureBtns[0].classList.contains('confi-active')){
-            for(let k = 0; k < saddleTypeImg.length; k++){
-                saddleTypeImg[k].style.visibility = 'hidden';
-                saddleTypeImg[k].style.opacity = 0;
-                saddleTypeImg[k].style.transition = '.3s ease';
-                saddleTypeImg[k].style.transform = 'translate(-7px, -25px)';
-                saddleTypeImg[z].classList.remove('view');
-            }
-            saddleTypeImg[z].style.visibility = 'visible';
-            saddleTypeImg[z].style.opacity = 1;
-            saddleTypeImg[z].style.transform = 'translate(0)';
-            saddleTypeImg[z].style.transitionDelay = '.3s';
-            saddleTypeImg[z].classList.add('view');
-
-            saddleIdx = z;
-        }
+        if( configureBtns[0].classList.contains('confi-active')) saddleChange(z);
         
         // Handdle Change
-        if( configureBtns[1].classList.contains('confi-active')){
-            for(let k = 0; k < handdleTypeImg.length; k++){
-                handdleTypeImg[k].style.visibility = 'hidden';
-                handdleTypeImg[k].style.opacity = 0;
-                handdleTypeImg[k].style.transition = '.3s ease';
-                handdleTypeImg[k].style.transform = 'translate(-7px, -25px)';
-                handdleTypeImg[z].classList.remove('view');
-            }
-            handdleTypeImg[z].style.visibility = 'visible';
-            handdleTypeImg[z].style.opacity = 1;
-            handdleTypeImg[z].style.transform = 'translate(0)';
-            handdleTypeImg[z].style.transitionDelay = '.3s';
-            handdleTypeImg[z].classList.add('view');
-
-            handdleIdx = z;
-        }
+        if( configureBtns[1].classList.contains('confi-active')) handdleChange(z);
 
         // Wheel Change
-        if(configureBtns[2].classList.contains('confi-active')){
-            for( let k = 0; k < wheelTypeImg.length; k++){
-                wheelTypeImg[k].style.visibility = 'hidden';
-                wheelTypeImg[k].style.opacity = 0;
-                wheelTypeImg[k].style.transition = '.3s ease';
-                wheelTypeImg[k].classList.remove('view');
-
-                if(k % 2 === 0) wheelTypeImg[k].style.transform = 'translateX(-60px) rotate(-45deg)';  
-                if(k % 2 !== 0) wheelTypeImg[k].style.transform = 'translateX(60px) rotate(45deg)';
-            }
-            // left wheel
-            wheelTypeImg[z * 2].style.visibility = 'visible';
-            wheelTypeImg[z * 2].style.opacity = 1;
-            wheelTypeImg[z * 2].style.transform = 'translate(0) rotate(0deg)';
-            wheelTypeImg[z * 2].style.transitionDelay = '.3s';
-            wheelTypeImg[z * 2].classList.add('view');
-
-            // right wheel
-            wheelTypeImg[z * 2 + 1].style.visibility = 'visible';
-            wheelTypeImg[z * 2 + 1].style.opacity = 1;
-            wheelTypeImg[z * 2 + 1].style.transform = 'translate(0) rotate(0deg)';
-            wheelTypeImg[z * 2 + 1].style.transitionDelay = '.3s';
-            wheelTypeImg[z * 2 + 1].classList.add('view');
-
-            wheelIdx = z;
-        }
-        
+        if(configureBtns[2].classList.contains('confi-active')) wheelChange(z);        
     })
 }
 
 
+savePopSave.addEventListener('click', () => saveInput.value === '' ? saveWarning() : save());
 
-
-
-
-const saveListWrap = document.querySelector('div.save-list-wrap > ul');
-let saveListCard = document.querySelectorAll('div.save-list-wrap > ul > li');
-let id = 0;
-let deleteBox = document.querySelectorAll('.delete-box');
-
-savePopSave.addEventListener('click', () => {
+function save(){
     savePopClose();
-    id++;
-    let saveNameValue = saveInput.value;
 
+    let saveNameValue = saveInput.value;
+    let target;
+    
+    nullCustom.style.display = 'none';
+
+    // 커스텀 리스트 추가
     saveListWrap.innerHTML += 
-    `<li>
+    `<li class="custom-appear">
         <div class="save-box"> 
             <p class="save-name">${saveNameValue}</p>
             <div class="check"> <i class="fas fa-check"></i> </div>
             <div class="custom-thumb">
                 <img class="save-frame" src="${cusColorSrc[colorIdx]}" alt="">
+                <img class="save-saddle" src="${saddleTypeSrc[saddleIdx]}" alt="">
                 <img class="save-handdle type1 ${id}" src="./assets/handdle1.png" alt="">
                 <img class="save-handdle type2 ${id}" src="./assets/handdle2.png" alt="">
                 <img class="save-handdle type3 ${id}" src="./assets/handdle3.png" alt=""> 
@@ -182,38 +137,166 @@ savePopSave.addEventListener('click', () => {
     }
     handdleGroup[handdleIdx].style.display = 'block';
 
-    // input value 값 초기화
-    saveInput.value = '';
+    // 커스텀 삭제
     deleteBox = document.querySelectorAll('.delete-box');
-
-    // saveListCard = document.querySelectorAll('div.save-list-wrap > ul > li');
     console.log(deleteBox.length);
-    let target;
     for(let i = 0; i < deleteBox.length; i++){
-        deleteBox[i].addEventListener('click', (e)=>{
+        deleteBox[i].addEventListener('click', (e) => {
             deleteBox = Array.prototype.slice.call(deleteBox);
-            // deleteBox = document.querySelectorAll('.delete-box');
             target = e.currentTarget; 
             let targetIdx = deleteBox.indexOf(target);
-            console.log('aaa');
-            console.log(targetIdx);
-            // console.log(deleteBox.length);
-            console.log(saveListWrap.childNodes);
+            // console.log(targetIdx);
             saveListWrap.removeChild(saveListWrap.childNodes[targetIdx]);
             deleteBox = document.querySelectorAll('.delete-box');
-            console.log(i);
+            id--;
         })
     }
-})
+
+    // saveBox 체크
+    saveBox = document.querySelectorAll('.save-box');
+    saveBoxChk = document.querySelectorAll('.save-box > div.check');
+    saveFrame = document.querySelectorAll('img.save-frame');
+    saveSaddle = document.querySelectorAll('img.save-saddle');
+    saveHanddle = document.querySelectorAll('img.save-handdle');
+    saveWheel = document.querySelectorAll('img.save-wheel');
+    for(let i = 0; i < saveBox.length; i++){
+        saveBox[i].addEventListener('click', () => {
+            for(let j = 0; j < saveBox.length; j++){
+                saveBoxChk[j].style.backgroundColor = '#999';
+            }
+            saveBoxChk[i].style.backgroundColor = '#ffb700';
+            console.log('Box',saveBox[i]);
+            console.log('Frame',saveFrame[i]);
+            console.log('Saddle',saveSaddle[i]);
+            console.log('Wheel',saveWheel[i]);
+
+            const saveFrameIdx = cusColorSrc.indexOf(saveFrame[i].getAttribute('src'));
+            const saveSaddleIdx = saddleTypeSrc.indexOf(saveSaddle[i].getAttribute('src'));
+            const saveWheelIdx = wheelTypeSrc.indexOf(saveWheel[i].getAttribute('src'));
+            const saveHanddleIdx = handdleTypeSrc.indexOf(saveHanddle[i].getAttribute('src'));
+
+            console.log(saveHanddleIdx);
+            // Frame Change
+            customFrame.setAttribute('src', cusColorSrc[saveFrameIdx]);
+            colorIdx = saveFrameIdx;
+            
+            // Wheel Change
+            wheelChange(saveWheelIdx);
+
+            // Handdle CHange
+            handdleChange(saveHanddleIdx);
+
+            // Saddle Change
+            saddleChange(saveSaddleIdx);
+
+            // Custom Option Select View
+            for(let z = 0; z < configureBtns.length; z++){
+                componentBtns[z].classList.remove('compo-active');
+                if(configureBtns[0].classList.contains('confi-active')) componentBtns[saddleIdx].classList.add('compo-active');
+                if(configureBtns[1].classList.contains('confi-active')) componentBtns[handdleIdx].classList.add('compo-active');
+                if(configureBtns[2].classList.contains('confi-active')) componentBtns[wheelIdx].classList.add('compo-active');
+            }
+        })
+    }
+
+    // 커스텀 리스트 생성될 때 애니메이션
+    customAppear[id].style.transform = 'translateX(50px)';
+    customAppear[id].style.opacity = 0;
+    setTimeout(() =>{
+        customAppear[id].style.transform = 'translateX(0px)';
+        customAppear[id].style.opacity = 1;
+        id++;
+    }, 100);
+
+    // input value 값 초기화
+    saveInput.value = '';
+}
+
+/* Handdle Change Method */
+function handdleChange(targetIdx){
+    for(let k = 0; k < handdleTypeImg.length; k++){
+        handdleTypeImg[k].style.visibility = 'hidden';
+        handdleTypeImg[k].style.opacity = 0;
+        handdleTypeImg[k].style.transition = '.3s ease';
+        handdleTypeImg[k].style.transform = 'translate(-7px, -25px)';
+        handdleTypeImg[targetIdx].classList.remove('view');
+    }
+    handdleTypeImg[targetIdx].style.visibility = 'visible';
+    handdleTypeImg[targetIdx].style.opacity = 1;
+    handdleTypeImg[targetIdx].style.transform = 'translate(0)';
+    handdleTypeImg[targetIdx].style.transitionDelay = '.3s';
+    handdleTypeImg[targetIdx].classList.add('view');
+
+    handdleIdx = targetIdx;
+}
 
 
+/* Saddle Change Method*/
+function saddleChange(targetIdx){
+    for(let k = 0; k < saddleTypeImg.length; k++){
+        saddleTypeImg[k].style.visibility = 'hidden';
+        saddleTypeImg[k].style.opacity = 0;
+        saddleTypeImg[k].style.transition = '.3s ease';
+        saddleTypeImg[k].style.transform = 'translate(-7px, -25px)';
+        saddleTypeImg[targetIdx].classList.remove('view');
+    }
+    saddleTypeImg[targetIdx].style.visibility = 'visible';
+    saddleTypeImg[targetIdx].style.opacity = 1;
+    saddleTypeImg[targetIdx].style.transform = 'translate(0)';
+    saddleTypeImg[targetIdx].style.transitionDelay = '.3s';
+    saddleTypeImg[targetIdx].classList.add('view');
 
+    saddleIdx = targetIdx;
+}
 
+/* Wheel Change Method */
+function wheelChange(targetIdx){
+    for( let k = 0; k < wheelTypeImg.length; k++){
+        wheelTypeImg[k].style.visibility = 'hidden';
+        wheelTypeImg[k].style.opacity = 0;
+        wheelTypeImg[k].style.transition = '.3s ease';
+
+        if(k % 2 === 0) wheelTypeImg[k].style.transform = 'translateX(-60px) rotate(-45deg)';  
+        if(k % 2 !== 0) wheelTypeImg[k].style.transform = 'translateX(60px) rotate(45deg)';
+    }
+    // left wheel
+    wheelTypeImg[targetIdx * 2].style.visibility = 'visible';
+    wheelTypeImg[targetIdx * 2].style.opacity = 1;
+    wheelTypeImg[targetIdx * 2].style.transform = 'translate(0) rotate(0deg)';
+    wheelTypeImg[targetIdx * 2].style.transitionDelay = '.3s';
+
+    // right wheel
+    wheelTypeImg[targetIdx * 2 + 1].style.visibility = 'visible';
+    wheelTypeImg[targetIdx * 2 + 1].style.opacity = 1;
+    wheelTypeImg[targetIdx * 2 + 1].style.transform = 'translate(0) rotate(0deg)';
+    wheelTypeImg[targetIdx * 2 + 1].style.transitionDelay = '.3s';
+
+    wheelIdx = targetIdx;
+}
 
 /* save 버튼 클릭 시 팝업 등장 */
 saveBtn.addEventListener('click',savePopAppear);
 /* cancle 버튼 클릭시 팝업창 닫기 */
 savePopCancle.addEventListener('click', savePopClose);
+
+ /* input focus 상태 */
+function onKeyDown(){
+    if(event.keyCode == 13) saveInput.value === '' ? saveWarning() : save();
+    if(event.keyCode == 27) savePopClose();
+}
+
+/* Pop-up Warning Message Method */
+function saveWarning(){
+    warningMessage.style.visibility = 'visible';
+    warningMessage.style.opacity = 1;
+    saveInput.style.transition = '.2s';
+    setTimeout(() => {
+        warningMessage.style.opacity = 0;
+        setTimeout(()=>{
+            warningMessage.style.opacity = 1;
+        },100)
+    }, 100);
+}
 
 /* save 팝업창 열기 함수 */
 function savePopAppear(){
@@ -223,8 +306,11 @@ function savePopAppear(){
     savePopBg.style.visibility = 'visible';
     savePopBg.style.opacity = 1;
     savePopup.style.transform = 'translateY(0)';
-    saveInput.focus();
+    setTimeout(() => {
+        saveInput.focus();
+    }, 100);
 }
+
 /* save 팝업창 닫기 함수 */
 function savePopClose(){
     savePopWrap.style.visibility = 'hidden';
