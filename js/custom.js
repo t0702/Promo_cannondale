@@ -34,6 +34,8 @@ const warningMessage = document.querySelector('div.save-pop > p:nth-child(3)');
 const saveListWrap = document.querySelector('div.save-list-wrap > ul');
 const customAppear = document.getElementsByClassName('custom-appear');
 
+const fullError = document.querySelector('div.full-error');
+
 let saveListCard = document.querySelectorAll('div.save-list-wrap > ul > li');
 let saveBoxChk;
 let saveBox;
@@ -103,113 +105,135 @@ for(let z = 0; z < componentBtns.length; z++){
 savePopSave.addEventListener('click', () => saveInput.value === '' ? saveWarning() : save());
 
 function save(){
-    savePopClose();
-
-    let saveNameValue = saveInput.value;
-    let target;
+    if(saveListWrap.childNodes.length < 5){
+        savePopClose();
     
-    nullCustom.style.display = 'none';
-
-    // 커스텀 리스트 추가
-    saveListWrap.innerHTML += 
-    `<li class="custom-appear">
-        <div class="save-box"> 
-            <p class="save-name">${saveNameValue}</p>
-            <div class="check"> <i class="fas fa-check"></i> </div>
-            <div class="custom-thumb">
-                <img class="save-frame" src="${cusColorSrc[colorIdx]}" alt="">
-                <img class="save-saddle" src="${saddleTypeSrc[saddleIdx]}" alt="">
-                <img class="save-handdle type1 ${id}" src="./assets/handdle1.png" alt="">
-                <img class="save-handdle type2 ${id}" src="./assets/handdle2.png" alt="">
-                <img class="save-handdle type3 ${id}" src="./assets/handdle3.png" alt=""> 
-                <img class="save-wheel" src="${wheelTypeSrc[wheelIdx]}" alt="">
+        let saveNameValue = saveInput.value;
+        let target;
+        
+        nullCustom.style.display = 'none';
+        nullCustom.style.visibility = 'visible';
+        nullCustom.style.opacity = 0;
+    
+        // 커스텀 리스트 추가
+        saveListWrap.innerHTML += 
+        `<li class="custom-appear">
+            <div class="save-box"> 
+                <p class="save-name">${saveNameValue}</p>
+                <div class="border-box"></div>
+                <div class="check"> <i class="fas fa-check"></i> </div>
+                <div class="custom-thumb">
+                    <img class="save-frame" src="${cusColorSrc[colorIdx]}" alt="">
+                    <img class="save-saddle" src="${saddleTypeSrc[saddleIdx]}" alt="">
+                    <img class="save-handdle type1 ${id}" src="./assets/handdle1.png" alt="">
+                    <img class="save-handdle type2 ${id}" src="./assets/handdle2.png" alt="">
+                    <img class="save-handdle type3 ${id}" src="./assets/handdle3.png" alt=""> 
+                    <img class="save-wheel" src="${wheelTypeSrc[wheelIdx]}" alt="">
+                </div>
             </div>
-        </div>
-        <div class="delete-box">
-            <i class="fas fa-trash"></i>
-        </div>
-    </li>`;
+            <div class="delete-box">
+                <i class="fas fa-trash"></i>
+            </div>
+        </li>`;
+    
+        // 핸들 제어
+        const handdleGroup = document.getElementsByClassName(`save-handdle ${id}`);
+        for(let i = 0; i < handdleGroup.length; i++){
+            handdleGroup[i].style.display = 'none';
+        }
+        handdleGroup[handdleIdx].style.display = 'block';
+    
+        // 커스텀 삭제
+        deleteBox = document.querySelectorAll('.delete-box');
+        console.log(deleteBox.length);
+        for(let i = 0; i < deleteBox.length; i++){
+            deleteBox[i].addEventListener('click', (e) => {
+                deleteBox = Array.prototype.slice.call(deleteBox);
+                target = e.currentTarget; 
+                let targetIdx = deleteBox.indexOf(target);
+                // console.log(targetIdx);
 
-    // 핸들 제어
-    const handdleGroup = document.getElementsByClassName(`save-handdle ${id}`);
-    for(let i = 0; i < handdleGroup.length; i++){
-        handdleGroup[i].style.display = 'none';
+                // deleteBox[targetIdx].style.width = '100%';
+                // saveListWrap.childNodes[targetIdx].style.width = 0;
+                // saveListWrap.childNodes[targetIdx].style.opacity = 0;
+                // saveListWrap.childNodes[targetIdx].style.borderLeft = 0;
+                // saveListWrap.childNodes[targetIdx].style.borderRight = 0;
+
+                saveListWrap.removeChild(saveListWrap.childNodes[targetIdx]);
+                deleteBox = document.querySelectorAll('.delete-box');
+                id--;
+
+                if(saveListWrap.childNodes.length === 0){
+                    nullCustom.style.display = 'flex';
+                    nullCustom.style.visibility = 'visible';
+                    setTimeout(()=>{
+                        nullCustom.style.opacity = 1;
+                    },300);
+                }
+            })
+        }
+    
+        // saveBox 체크
+        // saveBox = document.querySelectorAll('.save-box');
+        saveBox = document.querySelectorAll('.save-box');
+        saveBoxChk = document.querySelectorAll('.save-box > div.check');
+        saveFrame = document.querySelectorAll('img.save-frame');
+        saveSaddle = document.querySelectorAll('img.save-saddle');
+        saveHanddle = document.querySelectorAll('img.save-handdle');
+        saveWheel = document.querySelectorAll('img.save-wheel');
+        for(let i = 0; i < saveBox.length; i++){
+            saveBox[i].addEventListener('click', () => {
+                for(let j = 0; j < saveBox.length; j++){
+                    saveBoxChk[j].style.backgroundColor = '#999';
+                }
+                saveBoxChk[i].style.backgroundColor = '#ffb700';
+                console.log('Box',saveBox[i]);
+                console.log('Frame',saveFrame[i]);
+                console.log('Saddle',saveSaddle[i]);
+                console.log('Wheel',saveWheel[i]);
+    
+                const saveFrameIdx = cusColorSrc.indexOf(saveFrame[i].getAttribute('src'));
+                const saveSaddleIdx = saddleTypeSrc.indexOf(saveSaddle[i].getAttribute('src'));
+                const saveWheelIdx = wheelTypeSrc.indexOf(saveWheel[i].getAttribute('src'));
+                const saveHanddleIdx = handdleTypeSrc.indexOf(saveHanddle[i].getAttribute('src'));
+    
+                console.log(saveHanddleIdx);
+                // Frame Change
+                customFrame.setAttribute('src', cusColorSrc[saveFrameIdx]);
+                colorIdx = saveFrameIdx;
+                
+                // Wheel Change
+                wheelChange(saveWheelIdx);
+    
+                // Handdle CHange
+                handdleChange(saveHanddleIdx);
+    
+                // Saddle Change
+                saddleChange(saveSaddleIdx);
+    
+                // Custom Option Select View
+                for(let z = 0; z < configureBtns.length; z++){
+                    componentBtns[z].classList.remove('compo-active');
+                    if(configureBtns[0].classList.contains('confi-active')) componentBtns[saddleIdx].classList.add('compo-active');
+                    if(configureBtns[1].classList.contains('confi-active')) componentBtns[handdleIdx].classList.add('compo-active');
+                    if(configureBtns[2].classList.contains('confi-active')) componentBtns[wheelIdx].classList.add('compo-active');
+                }
+            })
+        }
+    
+        // 커스텀 리스트 생성될 때 애니메이션
+        customAppear[id].style.transform = 'translateX(50px)';
+        customAppear[id].style.opacity = 0;
+        setTimeout(() =>{
+            customAppear[id].style.transform = 'translateX(0px)';
+            customAppear[id].style.opacity = 1;
+            id++;
+        }, 100);
+    
+        // input value 값 초기화
+        saveInput.value = '';
+
     }
-    handdleGroup[handdleIdx].style.display = 'block';
-
-    // 커스텀 삭제
-    deleteBox = document.querySelectorAll('.delete-box');
-    console.log(deleteBox.length);
-    for(let i = 0; i < deleteBox.length; i++){
-        deleteBox[i].addEventListener('click', (e) => {
-            deleteBox = Array.prototype.slice.call(deleteBox);
-            target = e.currentTarget; 
-            let targetIdx = deleteBox.indexOf(target);
-            // console.log(targetIdx);
-            saveListWrap.removeChild(saveListWrap.childNodes[targetIdx]);
-            deleteBox = document.querySelectorAll('.delete-box');
-            id--;
-        })
-    }
-
-    // saveBox 체크
-    saveBox = document.querySelectorAll('.save-box');
-    saveBoxChk = document.querySelectorAll('.save-box > div.check');
-    saveFrame = document.querySelectorAll('img.save-frame');
-    saveSaddle = document.querySelectorAll('img.save-saddle');
-    saveHanddle = document.querySelectorAll('img.save-handdle');
-    saveWheel = document.querySelectorAll('img.save-wheel');
-    for(let i = 0; i < saveBox.length; i++){
-        saveBox[i].addEventListener('click', () => {
-            for(let j = 0; j < saveBox.length; j++){
-                saveBoxChk[j].style.backgroundColor = '#999';
-            }
-            saveBoxChk[i].style.backgroundColor = '#ffb700';
-            console.log('Box',saveBox[i]);
-            console.log('Frame',saveFrame[i]);
-            console.log('Saddle',saveSaddle[i]);
-            console.log('Wheel',saveWheel[i]);
-
-            const saveFrameIdx = cusColorSrc.indexOf(saveFrame[i].getAttribute('src'));
-            const saveSaddleIdx = saddleTypeSrc.indexOf(saveSaddle[i].getAttribute('src'));
-            const saveWheelIdx = wheelTypeSrc.indexOf(saveWheel[i].getAttribute('src'));
-            const saveHanddleIdx = handdleTypeSrc.indexOf(saveHanddle[i].getAttribute('src'));
-
-            console.log(saveHanddleIdx);
-            // Frame Change
-            customFrame.setAttribute('src', cusColorSrc[saveFrameIdx]);
-            colorIdx = saveFrameIdx;
-            
-            // Wheel Change
-            wheelChange(saveWheelIdx);
-
-            // Handdle CHange
-            handdleChange(saveHanddleIdx);
-
-            // Saddle Change
-            saddleChange(saveSaddleIdx);
-
-            // Custom Option Select View
-            for(let z = 0; z < configureBtns.length; z++){
-                componentBtns[z].classList.remove('compo-active');
-                if(configureBtns[0].classList.contains('confi-active')) componentBtns[saddleIdx].classList.add('compo-active');
-                if(configureBtns[1].classList.contains('confi-active')) componentBtns[handdleIdx].classList.add('compo-active');
-                if(configureBtns[2].classList.contains('confi-active')) componentBtns[wheelIdx].classList.add('compo-active');
-            }
-        })
-    }
-
-    // 커스텀 리스트 생성될 때 애니메이션
-    customAppear[id].style.transform = 'translateX(50px)';
-    customAppear[id].style.opacity = 0;
-    setTimeout(() =>{
-        customAppear[id].style.transform = 'translateX(0px)';
-        customAppear[id].style.opacity = 1;
-        id++;
-    }, 100);
-
-    // input value 값 초기화
-    saveInput.value = '';
 }
 
 /* Handdle Change Method */
@@ -279,7 +303,7 @@ saveBtn.addEventListener('click',savePopAppear);
 /* cancle 버튼 클릭시 팝업창 닫기 */
 savePopCancle.addEventListener('click', savePopClose);
 
- /* input focus 상태 */
+ /* input focus 상태일때*/
 function onKeyDown(){
     if(event.keyCode == 13) saveInput.value === '' ? saveWarning() : save();
     if(event.keyCode == 27) savePopClose();
@@ -298,24 +322,37 @@ function saveWarning(){
     }, 100);
 }
 
-/* save 팝업창 열기 함수 */
+/* save 팝업창 열기 */
 function savePopAppear(){
-    console.log('save');
-    savePopWrap.style.visibility = 'visible';
-    savePopWrap.style.opacity = 1;
-    savePopBg.style.visibility = 'visible';
-    savePopBg.style.opacity = 1;
-    savePopup.style.transform = 'translateY(0)';
-    setTimeout(() => {
-        saveInput.focus();
-    }, 100);
+    if(saveListWrap.childNodes.length < 5){
+        console.log('save');
+        savePopWrap.style.visibility = 'visible';
+        savePopWrap.style.opacity = 1;
+        savePopBg.style.visibility = 'visible';
+        savePopBg.style.opacity = 1;
+        savePopup.style.transform = 'translateY(0)';
+        setTimeout(() => {
+            saveInput.focus();
+        }, 100);
+    } else { // 커스텀 리스트가 가득 찼을 때.
+        fullError.style.visibility = 'visible';
+        fullError.style.opacity = 1;
+        fullError.style.transition = '.3s';
+        setTimeout(() => {
+            fullError.style.visibility = 'hidden';
+            fullError.style.opacity = 0;
+            fullError.style.transition = '.5s';
+        }, 400);
+    }
 }
 
-/* save 팝업창 닫기 함수 */
+/* save 팝업창 닫기 */
 function savePopClose(){
     savePopWrap.style.visibility = 'hidden';
     savePopWrap.style.opacity = 0;
     savePopBg.style.visibility = 'hidden';
     savePopBg.style.opacity = 0;
     savePopup.style.transform = 'translateY(50vh)';
+    warningMessage.style.visibility = 'hidden';
+    warningMessage.style.opacity = 0;
 }

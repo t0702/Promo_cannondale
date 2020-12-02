@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="stylesheet" type="text/css" href="./css/products.css">
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
+    <link rel="stylesheet" type="text/css" href="./css/about.css">
     <script src="https://kit.fontawesome.com/9f55273fbb.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -22,7 +23,31 @@
                 <li></li> <li></li> <li></li>
             </ul>
         </nav>
+        <div class="menu-wrap">
+            <div class="menu-bg"></div>
+            <div class="menu">
+                <ul>
+                    <li>HOME</li>
+                    <li>ABOUT</li>
+                    <li>PRODUCTS</li>
+                    <li>CUSTOM</li>
+                </ul>
+
+                <div class="social-wrap">
+                    <h2>social</h2>
+                    <ul>
+                        <li><a href="https://www.youtube.com/user/CdaleBRAD" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/ridecannondale/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://twitter.com/ridecannondale" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/RideCannondale" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cursor-cir"></div>
+        </div>
     </header>
+
+    <!-- Menu -->
 
     <!-- Main -->
     <section class="main">
@@ -98,6 +123,55 @@
         </div>
     </section>
 
+    <!-- about -->
+    <section class="about">
+        <div class="scroll-bar"></div>
+        <h2>Wherever you ride, whatever you ride.</h2>
+        <div class="horizon-wrap">
+            <div class="video-area">
+                <div class="video-wrap">
+                    <div class="video-line"></div>
+                    <div class="video-innerwrap">
+                        <div class="video-border"></div>
+                        <span>1971</span>
+                        <video autoplay loop muted>
+                            <source src="./assets/history.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history ch1">
+                <h3>In the beginning</h2>
+                <p>It was 1971: a year when the world was beginning to change rapidly with an exciting new spirit of digital invention, creativity and imagination along with a worldwide drive for new purpose. A new dawn. And yet, cycling was still very traditional, very conventional, conforming to some sort of rulebook: our founders believed that there had to be a better way.</p>
+            </div>
+
+            <div class="history ch2">
+                <div class="img-wrap">
+                    <img src="./assets/history1.jpg" alt="history image">
+                    <img src="./assets/history2.jpg" alt="history image">
+                </div>
+                <p><span>So we ditched the rulebook, cut a new path and created a new way.</span> From a Connecticut workshop we set about revolutionising cycling for the better, for everyone. We assumed nothing, we iterated and reiterated and from day one we have worked on pioneering materials, ergonomics and technology, and we haven’t looked back since.</p>
+            </div>
+
+            <div class="history ch3">
+                <div class="img-wrap">
+                    <img src="./assets/history3.jpg" alt="history image">
+                </div>
+                <p>We heralded aluminium and carbon-fibre manufacturing while everybody else out there stuck with steel, we shook up the suspension establishment with single-sided forks, designing incredible frames and products that reinvented racing, creating award-winning bicycles that helped push people further.</p>
+            </div>
+
+            <div class="history ch4">
+                <div class="img-wrap">
+                    <img src="./assets/history4.jpg" alt="history image">
+                </div>
+                <p>People have called us crazy, ridiculous, and worse. And yet, right from the outset we knew what we were doing felt right and was a damn sight more exciting – this unique passion fuels our never-ending drive to make iconic bicycles that just work better. Bicycles that make your ride better. Wherever you ride, whatever you ride, ditch the rulebook and let’s ride together.</p>
+            </div>
+        </div>
+    </section>
+
+
+
     <!-- Products Detail Pop Up -->
     <div class="detail-view">
         <div class="detail-bg"></div>
@@ -124,7 +198,6 @@
             </div>
         </div>
     </div>
-
     <!-- Products -->
     <section class="products">
         <div class="magnifier-cursor">
@@ -297,11 +370,12 @@
         </article>
     </section>
 
-    
+    <!-- Custom -->
     <section class="custom">
         <article class="custom-left">
             <h2>Habit <span>Carbon</span></h2>
             <div class="custom-area">
+                <div class="custom-circle"></div>
                 <div class="custom-wrap">
                     <img class="main-frame" src="./assets/black-frame.png" alt="bicycle frame">
                     
@@ -428,6 +502,7 @@
         </article>
 
     </section>
+    <!-- Custom Save Pop Up -->
     <div class="save-pop-wrap">
         <div class="save-pop-bg"></div>
         <div class="save-pop">
@@ -440,31 +515,19 @@
             </div>
         </div>
     </div>
+    <!-- Custom Full Error -->
+    <div class="full-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>Your custom is full.</p>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="./js/imgSrc.js"></script>
     <script type="text/javascript" src="./js/products.js"></script>
     <script type="text/javascript" src="./js/custom.js"></script>
+    <script type="text/javascript" src="./js/about.js"></script>
+    <script type="text/javascript" src="./js/menu.js"></script>
 </body>
 </html>
-
-<!-- <li>
-    
-    <div class="save-box">
-        <p class="save-name">my cus</p>
-        <div class="check">
-            <i class="fas fa-check"></i>
-        </div>
-        <div class="custom-thumb">
-            <img class="save-frame" src="./assets/black-frame.png" alt="">
-            <img class="save-handdle type1" src="./assets/handdle1.png" alt="">
-            <img class="save-handdle type2" src="./assets/handdle2.png" alt="">
-            <img class="save-handdle type3" src="./assets/handdle3.png" alt=""> 
-            <img class="save-wheel" src="./assets/wheel-type1.png" alt="">
-        </div>
-    </div>
-    <div class="delete-box">
-        <i class="fas fa-trash"></i>
-    </div>
-</li> -->

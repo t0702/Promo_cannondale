@@ -1,6 +1,6 @@
 
 /* Products */
-section.products {display: flex; height: 75vh; max-height: 650px; min-height: 550px; position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); }
+section.products {display: flex; height: 75vh; max-height: 650px; min-height: 550px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
 article.info-left {width: 23%; height:100%; display: flex; flex-direction: column; justify-content: space-between; padding-right: 30px; z-index:9;}
 div.info-cycle {display: flex; flex-direction: column;}
@@ -41,8 +41,6 @@ div.next-arrow {right: 20px;}
 
 div.details {width: 60vw; display: flex; position: absolute; top: 0; left: 0; transition: .5s;}
 div.details > img {width: 60vw;;}
-
-
 
 
 div.info-wrap > ul.slide-index {display: flex;}

@@ -1,5 +1,5 @@
 /* * Main * */
-body {overflow:hidden;}
+/* body {overflow:hidden;} */
 section.main {position: relative; top: 0; left: 0; display: flex;}
 div.left-area {position: relative; width: 40%; height: 100vh; display: flex; flex-direction: column; justify-content: space-between;}
 div.left-area > div.text-area > h2 {font-family: var(--font); font-weight: 200; font-size: 60px; padding-top: 160px; white-space: nowrap;}
@@ -13,7 +13,7 @@ div.left-area > div.video > div.video-img {position: relative; width: 200px;}
 div.left-area > div.video > div.video-img > img {width: 200px; box-shadow: 3px 3px 10px #00000010;}
 div.left-area > div.video > div.video-img > div.play {width: 30px; height: 25px; background-color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);}
 
-div.right-area { height: 100vh; width: 60%; display: flex; justify-content:center;}
+div.right-area { height: 100vh; width: 60%; display: flex; justify-content:center; }
 div.right-area > div.cycle-wrap {width: 800px; min-width:800px; height:445px;align-self: flex-end; margin-bottom: 80px; position: relative;}
 div.right-area > div.cycle-wrap > img {width: 800px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
 

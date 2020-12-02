@@ -33,8 +33,8 @@ const bigNameEls = document.querySelectorAll('ul.big-name > li');
 const infoLeftP = document.querySelectorAll('div.info-cycle > p');
 
 const bigNameH = bigNameEls.clientHeight;
-const slideWidth = articleSlide.clientWidth;
-const slideHeight = articleSlide.clientHeight;
+let slideWidth;
+let slideHeight;
 
 let slideCount = 0;
 let isAni = false;
@@ -48,6 +48,8 @@ slideVisible(slideCount);
 
 
 prevBtn.addEventListener('click', () => {
+    slideWidth = articleSlide.clientWidth;
+    slideHeight = articleSlide.clientHeight;
     if(isAni) return;
     slideCount--;
     console.log('prev', slideCount);
@@ -113,7 +115,8 @@ prevBtn.addEventListener('click', () => {
 
 /* next 버튼 클릭 시 */
 nextBtn.addEventListener('click', () => {
-
+    slideWidth = articleSlide.clientWidth;
+    slideHeight = articleSlide.clientHeight;
     // 애니메이션이 실행되고 있다면 return
     if(isAni) return;
 

@@ -1,11 +1,10 @@
-
-
 section.custom {height: 75vh; max-height: 650px; min-height: 550px; position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); display: flex;}
 
 article.custom-left {width: 50%; min-width: 600px; height: 100%; display: flex; flex-direction: column; justify-content: space-between;}
 article.custom-left > h2 {font-size: 40px; font-family: var(--font); font-weight: 900;}
 article.custom-left > h2 > span {font-weight: 300;}
 article.custom-left > div.custom-area {width: 100%; display: flex; justify-content: center; margin-bottom: 100px; position: relative;}
+div.custom-area > div.custom-circle {width: 450px; height: 450px; background-color: rgb(216, 214, 231); border-radius: 100%; position: absolute; top: 40%; left: 46%; transform: translate(-50%, -50%);}
 div.custom-area > div.custom-wrap {width: 410px; position: relative; transform: translateX(-10%);}
 div.custom-area > div.custom-wrap > img.main-frame {width: 100%; position: relative; z-index: 2; }
 
@@ -114,32 +113,26 @@ div.custom-list {min-width: 310px; padding: 0 20px; margin-left: 30px;}
 div.custom-list > h2 {font-size: 26px; font-family: var(--font); font-weight: 900; white-space: nowrap; margin: 20px 0 50px;}
 
 
-div.custom-list > div.null-custom { width: 100%; height: calc(100% - 96px); background-color: rgb(216, 214, 231); border-radius: 2px; display: flex; justify-content: center; align-items: center; text-align: center; }
+div.custom-list > div.null-custom { width: 100%; height: calc(100% - 96px); background-color: rgb(216, 214, 231); border-radius: 2px; display: flex; justify-content: center; align-items: center; text-align: center; visibility: visible; opacity: 1; transition: .4s;}
 div.custom-list > div.null-custom > p {font-size: 20px; font-family: var(--font); font-weight: 700; color: #fff; animation: nullCustom .8s ease infinite alternate;}
-
-@keyframes nullCustom {
-    0% {opacity: 1;}
-    20% {opacity: 1;}
-    100% { opacity: 0;}
-}
 
 
 div.save-list-wrap {height: calc(100% - 96px); width: 100%;}
 div.save-list-wrap > ul {width: 100%; display: flex; flex-direction: column;}
-div.save-list-wrap > ul > li {height: 100px;margin-bottom: 20px; border-radius: 2px; display: flex; transition: .5s ease;
-}
+div.save-list-wrap > ul > li {height: 100px;margin-bottom: 13px; border-radius: 2px;  display: flex; transition: .5s ease;}
 div.save-list-wrap > ul > li > div{transition: .3s;}
-div.save-list-wrap > ul > li > div.save-box{width: 100%; height: 100%; background-color: #fff; position: relative; border-radius: 2px; 
-    overflow: hidden; cursor: pointer;
+div.save-list-wrap > ul > li > div.save-box{width: 100%; height: 100%; background-color: #fff; position: relative; border-radius: 2px; overflow: hidden; cursor: pointer; 
+    /* border: 10px solid rgb(216, 214, 231); */
 }
-div.save-list-wrap > ul > li > div.save-box > p {position: absolute; top: 10px; right: 10px; font-weight: 700; font-family: var(--font);}
-div.save-box > div.check {position: absolute; bottom: 10px; right: 10px; width: 20px; height: 20px; background-color: #999; border-radius: 100%; display: flex; justify-content: center; align-items: center;}
+div.save-box > div.border-box {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 10px solid rgb(216, 214, 231); z-index:2;}
+div.save-box > p {position: absolute; top: 20px; right: 20px; font-weight: 700; font-family: var(--font);}
+div.save-box > div.check {position: absolute; bottom: 20px; right: 20px; width: 20px; height: 20px; background-color: #999; border-radius: 100%; display: flex; justify-content: center; align-items: center;}
 div.save-box > div.check > svg {font-size: 10px;}
 div.save-box > div.check > svg > path {color: #fff;}
 
 
 
-div.save-box > div.custom-thumb {position: absolute; top: 40px; left: -100px;}
+div.save-box > div.custom-thumb {position: absolute; top: 33px; left: -100px;}
 div.custom-thumb > img.save-frame {width: 200px; position: relative; z-index: 1;}
 div.custom-thumb > img.save-saddle {position: absolute; top: -14px; left: 36px; width: 42px;}
 div.custom-thumb > img.save-handdle {position: absolute;}
@@ -175,9 +168,8 @@ div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div:first-child {margin-ri
 div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div:hover {background-color: var(--yellow);}
 
 
-
-
-
+div.full-error {width: 250px; height: 120px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 25px; color: var(--yellow); background-color: #fff; border-radius: 2px; box-shadow: 0px 0px 20px #00000010; z-index: 9; visibility: hidden; opacity: 0; transition: .3s;}
+div.full-error > p {font-size: 15px; font-family: var(--font); font-weight: 700; color: #000; margin-top: 20px;}
 
 
 .updown {animation: updown .6s ease-in-out;}
@@ -187,6 +179,8 @@ div.save-pop-wrap > div.save-pop > div.pop-btn-wrap > div:hover {background-colo
     100% {transform: translateY(0px);}
 }
 
-section.main {display: none;}
-section.products {display: none;}
-/* section.custom {display: none;} */
+@keyframes nullCustom {
+    0% {opacity: 0;}
+    80% {opacity: 1;}
+    100% { opacity: 1;}
+}
