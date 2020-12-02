@@ -6,12 +6,23 @@ div.left-area > div.text-area > h2 {font-family: var(--font); font-weight: 200; 
 div.left-area > div.text-area > h2 > span {font-weight: 900; font-size: 70px; }
 div.left-area > div.text-area > p {font-size: 16px; margin-top: 30px; line-height: 1.4em;}
 
-div.left-area > div.video {margin-bottom: 80px;}
+div.left-area > div.video {margin-bottom: 10vh;}
 div.left-area > div.video > h3 {font-family: var(--font); font-size: 25px; font-weight: 700; margin-bottom: 20px;}
 div.left-area > div.video > h3 > span {color: var(--yellow);}
-div.left-area > div.video > div.video-img {position: relative; width: 200px;}
+div.left-area > div.video > div.video-img {position: relative; width: 200px; display: flex; flex-direction: column; cursor: pointer;}
 div.left-area > div.video > div.video-img > img {width: 200px; box-shadow: 3px 3px 10px #00000010;}
+div.left-area > div.video > div.video-img > div.time-bar {background-color: #000; width: 100%; height: 4px;}
+div.left-area > div.video > div.video-img > div.time-bar > div.yellow-bar {width: 0%; height: 100%; background-color: var(--yellow); transition: 2s linear;}
+div.left-area > div.video > div.video-img:hover > div.time-bar > div.yellow-bar {width: 100%;}
 div.left-area > div.video > div.video-img > div.play {width: 30px; height: 25px; background-color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);}
+
+div.video-pop-wrap {position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index:2; visibility: hidden;}
+div.video-pop-wrap > div.video-bg {width: 100%; height: 100%; background-color: #00000030; position: absolute; top: 0; left: 0; transition: .3s; visibility: hidden; opacity: 0;}
+div.video-pop-wrap > div.video-pop {padding: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, 100%); background-color: #fff; border-radius: 2px; display: flex; justify-content: center; align-items: center; transition: .3s;}
+
+
+
+
 
 div.right-area { height: 100vh; width: 60%; display: flex; justify-content:center; }
 div.right-area > div.cycle-wrap {width: 800px; min-width:800px; height:445px;align-self: flex-end; margin-bottom: 80px; position: relative;}
@@ -22,11 +33,11 @@ div.cycle-wrap > ul > li {position: absolute; width: 60px; height: 60px; backgro
 
 div.cycle-wrap > ul > li.saddle {top: 0; left: 120px;}
 div.cycle-wrap > ul > li.handdle {top: -10px; right: 150px;}
-div.cycle-wrap > ul > li.wheel {top: 180px; right: 0;}
+div.cycle-wrap > ul > li.wheel {top: 180px; left: 0;}
 div.cycle-wrap > ul > li.chain {top: 280px; left: 48%;}
 
 div.cycle-wrap > ul > li > div.icon {height:40px; display:flex; align-items: center; cursor: pointer;}
-div.cycle-wrap > ul > li > div.icon > img {height: 40px; cursor: pointer;}
+div.cycle-wrap > ul > li > div.icon > img {height: 40px; cursor: pointer; transition: .3s;}
 div.cycle-wrap > ul > li.saddle > div.icon > img {width: 40px; transition:.3s;}
 div.cycle-wrap > ul > li.handdle > div.icon > img {width: 40px; }
 div.cycle-wrap > ul > li > div.icon > h2 {font-size: 25px; font-family: var(--font); font-weight: 900; margin-left: 20px; display: none; visibility:hidden; opacity: 0; transition:.3s;}

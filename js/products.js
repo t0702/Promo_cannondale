@@ -10,6 +10,9 @@ const helmetImg = document.querySelector('div.helmet-img > img');
 const helmetColorChip = document.querySelectorAll('ul.color-chip > li');
 const helmetClick = document.querySelectorAll('div.click');
 const helmetClick2 = document.querySelectorAll('div.click2');
+const section = document.querySelectorAll('section');
+const pageBlind = document.querySelector('div.page-blind');
+const goCustomize = document.querySelector('div.custom');
 
 const slideIndex = document.querySelectorAll('ul.slide-index > li');
 const detailView = document.querySelector('div.detail-view');
@@ -180,6 +183,19 @@ nextBtn.addEventListener('click', () => {
     },800);
 });
 
+
+goCustomize.addEventListener('click', () => {
+    setTimeout(()=>{
+        for(let j = 0; j < section.length; j++){
+            section[j].style.display = 'none';
+        }
+        section[3].style.display = 'flex';
+    },400);
+    pageBlind.classList.add('pageBlind');
+    setTimeout(()=>{
+        pageBlind.classList.remove('pageBlind');
+    }, 800);
+})
 
 /* Detail Img Change Method */
 function DetailChange(thumbSrc, detailSrc){

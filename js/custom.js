@@ -4,6 +4,8 @@ componentBtns = Array.prototype.slice.call(componentBtns);
 
 const componentImg = document.querySelectorAll('div.com-icon > img');
 const customColor = document.querySelectorAll('div.color > ul > li');
+const customColorclick = document.querySelectorAll('div.color > ul > li > div.click');
+const customColorclick2 = document.querySelectorAll('div.color > ul > li > div.click2');
 const customFrame = document.querySelector('div.custom-wrap > img.main-frame');
 
 const saddleTypeImg = document.querySelectorAll('img.custom-saddle');
@@ -56,6 +58,16 @@ for(let i = 0; i < customColor.length; i++){
     customColor[i].addEventListener('click', () => {
         customFrame.setAttribute('src', cusColorSrc[i]);
         colorIdx = i;
+        for(let j = 0; j < customColor.length; j++){
+            customColor[j].style.border = 'none';
+        }
+        customColor[i].style.border = '5px solid #000';
+        customColorclick[i].classList.add('select');
+        customColorclick2[i].classList.add('select2');
+        setTimeout(() => {
+            customColorclick[i].classList.remove('select');
+            customColorclick2[i].classList.remove('select2');
+        }, 500)
     })
 }
 
@@ -121,7 +133,7 @@ function save(){
             <div class="save-box"> 
                 <p class="save-name">${saveNameValue}</p>
                 <div class="border-box"></div>
-                <div class="check"> <i class="fas fa-check"></i> </div>
+                <div class="check-view"> <i class="fas fa-check"></i> </div>
                 <div class="custom-thumb">
                     <img class="save-frame" src="${cusColorSrc[colorIdx]}" alt="">
                     <img class="save-saddle" src="${saddleTypeSrc[saddleIdx]}" alt="">
@@ -176,7 +188,7 @@ function save(){
         // saveBox 체크
         // saveBox = document.querySelectorAll('.save-box');
         saveBox = document.querySelectorAll('.save-box');
-        saveBoxChk = document.querySelectorAll('.save-box > div.check');
+        saveBoxChk = document.querySelectorAll('.save-box > div.check-view');
         saveFrame = document.querySelectorAll('img.save-frame');
         saveSaddle = document.querySelectorAll('img.save-saddle');
         saveHanddle = document.querySelectorAll('img.save-handdle');
@@ -185,6 +197,7 @@ function save(){
             saveBox[i].addEventListener('click', () => {
                 for(let j = 0; j < saveBox.length; j++){
                     saveBoxChk[j].style.backgroundColor = '#999';
+                    saveBoxChk[j].style.color = '#fff';
                 }
                 saveBoxChk[i].style.backgroundColor = '#ffb700';
                 console.log('Box',saveBox[i]);

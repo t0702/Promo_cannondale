@@ -60,6 +60,7 @@ table {
 body { width: 100vw; overflow-x:hidden; overflow: hidden;}
 body::-webkit-scrollbar{display:none;}
 section {max-width: 1400px; width: 100%; height: 100vh; margin: 0 auto;}
+div.page-blind {width: 0vw; height: 100vh; position: fixed; top: 0; right: 0; background-color: #000; z-index:2;}
 
 /* * header * */
 header {width: 100%; padding: 25px 0; position: fixed; top: 0; left: 0; z-index:99; background-color: transparent; }
@@ -85,5 +86,12 @@ div.social-wrap > ul > li {margin-right: 20px;}
 div.social-wrap > ul > li > a {font-size: 20px; color: #fff;}
 
 
+.pageBlind {animation: pageBlind .8s forwards;}
+@keyframes pageBlind {
+    0% {right: 0; width: 0;}
+    40% {right: 0; width: 100%;}
+    60% {right: 0; width: 100%;}
+    100% {right:100%; width: 0;}
+}
 
 

@@ -50,8 +50,9 @@ for(let i = 0; i < componentBtn.length; i++){
             setTimeout(() => { 
                 componentBtn[i].style.height = '300px'; 
 
+                if(i === 1) componentBtn[i].style.height = '280px';
+                if(i === 2) componentBtn[i].style.height = '240px';
                 if(i === 3) componentBtn[i].style.height = '300px'; 
-                
                 componentScript[i].style.opacity = 1;
                 componentScript[i].style.display = 'flex';
                 componentScript[i].style.visibility = 'visible';
@@ -62,12 +63,23 @@ for(let i = 0; i < componentBtn.length; i++){
                 cycleImg.style.transform = 'translate(-10%, -20%) scale(1.9)';
                 cycleImg.style.transition = '1s';
             }
-            if( i === 3){
+            if(i === 1){
+                setTimeout(()=>{
+                    componentBtn[i].style.right = '280px';
+                },300);
+                cycleImg.style.transform = 'translate(-45%, -20%) scale(1.9)';
+                cycleImg.style.transition = '1s';
+            }
+            if(i === 2){
+                cycleImg.style.transform = 'translate(10%, -50%) scale(1.9)';
+                cycleImg.style.transition = '1s';
+            }
+            if(i === 3){
                 setTimeout(()=>{
                     componentBtn[i].style.top = '200px';
                 },300);
                 componentBtn[i].style.left = '58%';
-                cycleImg.style.transform = 'translate(-20%, -70%) scale(1.9)';
+                cycleImg.style.transform = 'translate(10%, -70%) scale(1.9)';
                 cycleImg.style.transition = '1s';
             }
         }
@@ -75,6 +87,8 @@ for(let i = 0; i < componentBtn.length; i++){
             isActive = false;
             for(let j = 0; j < componentBtn.length; j++){
                 componentBtn[0].style.left = '120px';
+                componentBtn[1].style.right = '150px';
+                componentBtn[2].style.left = '0';
                 componentBtn[3].style.left = '48%';
                 componentBtn[3].style.top = '280px';
             }
@@ -83,3 +97,20 @@ for(let i = 0; i < componentBtn.length; i++){
         }
     })
 }
+
+
+const videoImgWrap = document.querySelector('div.video-img');
+// const videoBg = document.querySelector('div.video-bg');
+// const videoPop = document.querySelector('div.video-pop');
+// const video = document.querySelector('div.video-pop > iframe');
+// let setTime;
+
+videoImgWrap.addEventListener('mouseenter', () => {
+    setTime = setTimeout(() => {
+        window.open('https://www.youtube.com/watch?v=XuEs0jFCV4c', '_blank'); 
+    }, 2000);
+})
+videoImgWrap.addEventListener('mouseleave', () => {
+    clearTimeout(setTime);
+})
+

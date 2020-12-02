@@ -5,7 +5,6 @@ const menuWrap = document.querySelector('div.menu-wrap');
 const menuLi = document.querySelectorAll('div.menu > ul > li');
 const menuBg = document.querySelector('div.menu-bg');
 const cursorCir = document.querySelector('div.cursor-cir');
-const section = document.querySelectorAll('section');
 const body = document.querySelector('body');
 
 let isOpen = false;
@@ -25,10 +24,22 @@ for(let i = 0; i < menuLi.length; i++){
         }
         
         // 메뉴 클릭 시 section display 변경
-        for(let j = 0; j < menuLi.length; j++){
-            section[j].style.display = 'none';
-        }
-        section[i].style.display = 'flex';
+        setTimeout(()=>{
+            for(let j = 0; j < menuLi.length; j++){
+                section[j].style.display = 'none';
+                // section[j].style.opacity = 0;
+                // section[j].style.transition = '.2s';
+                // section[j].style.pointerEvents = 'none';
+            }
+            section[i].style.display = 'flex';
+        },400);
+        pageBlind.classList.add('pageBlind');
+        setTimeout(()=>{
+            pageBlind.classList.remove('pageBlind');
+        }, 800);
+        // section[i].style.opacity = 1;
+        // section[i].style.pointerEvents = 'auto';
+
 
         // 메뉴 목록 클릭 시 메뉴 닫힘.
         menu.style.right = '-30vw';
@@ -44,10 +55,29 @@ for(let i = 0; i < menuLi.length; i++){
             hamburgerLi[2].style.transform = 'translate(-50%, -50%) rotate(0)';
         }
         isOpen = false;
+
     })
 }
 
 
+// 메뉴 배경 클릭 시 메뉴 닫힘
+menuBg.addEventListener('click', () => {
+    if(isOpen){
+        menu.style.right = '-30vw';
+        menuBg.style.opacity = 0;
+        menuWrap.style.pointerEvents = "none";
+        for(let i = 0; i < hamburgerLi.length; i++){
+            hamburgerLi[i].style.backgroundColor = '#000';
+            hamburgerLi[0].style.top = 0;
+            hamburgerLi[0].style.transform = 'translate(-50%, -50%) rotate(0)';
+            hamburgerLi[1].style.transform = 'translate(-50%, -50%)';
+            hamburgerLi[1].style.opacity = 1;
+            hamburgerLi[2].style.top = '100%';
+            hamburgerLi[2].style.transform = 'translate(-50%, -50%) rotate(0)';
+        }
+        isOpen = false;
+    }
+})
 
 
 
@@ -82,6 +112,8 @@ hamburger.addEventListener('click', () => {
         isOpen = false;
     }
 });
+
+
 
 window.addEventListener('mousemove', (e) => {
     const x = e.clientX;
