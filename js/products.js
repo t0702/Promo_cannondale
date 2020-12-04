@@ -27,6 +27,7 @@ const detailClose = document.querySelector('div.detail-close');
 const detailPrev = document.querySelector('div.prev-arrow');
 const detailNext = document.querySelector('div.next-arrow');
 const detailBorder = document.querySelector('div.inner-border');
+const detailPlus = document.querySelector('div.detail-plus');
 
 const nameH2 = document.querySelector('div.name-wrap > h2');
 const nameBlind = document.querySelector('div.h2-blind');
@@ -266,22 +267,22 @@ for(let i = 0; i < helmetColorChip.length; i++){
     })
 }
 
+
+/* Detail Thumbnail Plus Btn Click */
+detailPlus.addEventListener('click', () => {
+    detailOpen();
+    detailImgWrap.style.left = 0;
+    detailCount = 0;
+    detailPrev.style.opacity = 0;
+    detailPrev.style.visibility = 'hidden';
+    detailNext.style.opacity = 1;
+    detailNext.style.visibility = 'visible';
+})
+
 /* Detail Thumbnail Click */
 for(let i = 0; i < detailThumbWrap.length; i++){
     detailThumbWrap[i].addEventListener('click', ()=>{
-        detailView.style.display = 'block';
-        setTimeout(()=>{
-            detailClose.style.height = '45px';
-            detailClose.style.transition = '.3s';
-        
-            detailPop.style.top = '50%';
-            detailPop.style.border = '1px solid #b3b1b8';
-            detailPop.style.transition = '.5s';
-        
-            detailBg.style.opacity = 1;
-            detailBg.style.visibility = 'visible';
-            detailBg.style.transition = '.5s';
-        },100);
+        detailOpen();
 
         detailWidth = detailPop.getBoundingClientRect().width;
         detailCount = i;
@@ -300,7 +301,22 @@ for(let i = 0; i < detailThumbWrap.length; i++){
         detailNext.style.visibility = 'visible';
     })
 }
-
+/* Detail Thumbnail Open */
+function detailOpen(){
+    detailView.style.display = 'block';
+    setTimeout(()=>{
+        detailClose.style.height = '45px';
+        detailClose.style.transition = '.3s';
+    
+        detailPop.style.top = '50%';
+        detailPop.style.border = '1px solid #b3b1b8';
+        detailPop.style.transition = '.5s';
+    
+        detailBg.style.opacity = 1;
+        detailBg.style.visibility = 'visible';
+        detailBg.style.transition = '.5s';
+    },100);
+}
 /* Detail Pop Up Close */
 detailClose.addEventListener('click', OnDetailClose);
 detailBg.addEventListener('click', OnDetailClose);

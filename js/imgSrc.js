@@ -1,9 +1,9 @@
 /* Helmet */
 const helmetSrc = [
-    './assets/helmet_blue.png', 
-    './assets/helmet_black.png', 
-    './assets/helmet_white.png', 
-    './assets/helmet_gray.png'
+    './assets/helmet_blue-2.png', 
+    './assets/helmet_black-2.png', 
+    './assets/helmet_white-2.png', 
+    './assets/helmet_gray-2.png'
 ];
 
 /* Detail Thumbnail */

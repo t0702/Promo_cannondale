@@ -6,11 +6,13 @@ const menuLi = document.querySelectorAll('div.menu > ul > li');
 const menuBg = document.querySelector('div.menu-bg');
 const cursorCir = document.querySelector('div.cursor-cir');
 const body = document.querySelector('body');
+const nav = document.querySelector('header > nav');
 
 let isOpen = false;
 let isMain = true;
 let isProducts = false;
 let isCustom = false;
+
 
 for(let i = 0; i < menuLi.length; i++){
     menuLi[i].addEventListener('click', ()=>{
@@ -75,6 +77,18 @@ menuBg.addEventListener('click', () => {
 })
 
 
+console.log((window.innerWidth - nav.clientWidth)/2);
+
+
+window.addEventListener('resize', () => {
+    if(!isOpen){
+        menu.style.width = (window.innerWidth - nav.clientWidth) / 2 + 400 + 'px';
+        menu.style.right = ((window.innerWidth - nav.clientWidth) / 2 + 400) * -1 + 'px';
+    } else if(isOpen){
+        menu.style.width = (window.innerWidth - nav.clientWidth) / 2 + 400 + 'px';
+        menu.style.right = '0px';
+    }
+})
 
 hamburger.addEventListener('click', () => {
     if(!isOpen){
@@ -92,7 +106,7 @@ hamburger.addEventListener('click', () => {
         }
         isOpen = true;
     }else if(isOpen){
-        menu.style.right = '-30vw';
+        menu.style.right =  ((window.innerWidth - nav.clientWidth) / 2 + 400) * -1 + 'px';
         menuBg.style.opacity = 0;
         menuWrap.style.pointerEvents = "none";
         for(let i = 0; i < hamburgerLi.length; i++){
