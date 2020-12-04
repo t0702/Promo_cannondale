@@ -12,12 +12,14 @@ let horGet;
 let v;
 let translateX;
 let isScroll = false;
+let isAbout = false;
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
 /* Horizon Scroll */
 window.addEventListener('scroll', () => {
+  if(!isAbout) return;
   console.log('마우스 스크롤 중....');
   horGet = horizonWrap.getBoundingClientRect(); // 섹션의 바운딩 정보
   secGet = sectionAbout.getBoundingClientRect(); // 호리즌랩의 바운딩 정보
@@ -90,7 +92,8 @@ window.addEventListener('mouseup', (e) => {
   movingEnd();
 });
 window.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
+  if(!isAbout) return;
+  if(!isDown) return;
   console.log('마우스 드래그 중....');
   //   console.log('translateX : ', translateX);
   horGet = horizonWrap.getBoundingClientRect(); // 섹션의 바운딩 정보

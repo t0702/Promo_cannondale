@@ -295,6 +295,9 @@ for(let i = 0; i < detailThumbWrap.length; i++){
             detailPrev.style.opacity = 1;
             detailPrev.style.visibility = 'visible';
         }
+
+        detailNext.style.opacity = 1;
+        detailNext.style.visibility = 'visible';
     })
 }
 
@@ -324,6 +327,7 @@ function OnDetailClose(){
 /* Detail Slide */
 detailPrev.addEventListener('click', ()=>{
     detailCount--;
+    console.log(detailCount);
     detailImgWrap.style.left = detailCount * detailWidth * -1 + 'px';
     detailImgWrap.style.transition = '.5s';
 
@@ -343,6 +347,7 @@ detailPrev.addEventListener('click', ()=>{
 
 detailNext.addEventListener('click', ()=>{
     detailCount++;
+    console.log(detailCount);
     detailImgWrap.style.left = detailCount * detailWidth * -1 + 'px';
     detailImgWrap.style.transition = '.5s';
 

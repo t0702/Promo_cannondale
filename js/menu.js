@@ -9,19 +9,14 @@ const body = document.querySelector('body');
 
 let isOpen = false;
 let isMain = true;
-let isAbout = false;
 let isProducts = false;
 let isCustom = false;
 
 for(let i = 0; i < menuLi.length; i++){
     menuLi[i].addEventListener('click', ()=>{
-        
+        window.scrollTo(0, 0);
         whatSection(i);
-        if(isMain){
-            body.style.overflow = 'hidden';
-        } else {
-            body.style.overflow = 'auto';
-        }
+        isAbout ? body.style.overflow = 'auto' : body.style.overflow = 'hidden';
         
         // 메뉴 클릭 시 section display 변경
         setTimeout(()=>{

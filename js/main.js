@@ -65,8 +65,9 @@ for(let i = 0; i < componentBtn.length; i++){
             }
             if(i === 1){
                 setTimeout(()=>{
-                    componentBtn[i].style.right = '280px';
+                    componentBtn[i].style.right = '30px';
                 },300);
+                componentBtn[i].style.top = '100px';
                 cycleImg.style.transform = 'translate(-45%, -20%) scale(1.9)';
                 cycleImg.style.transition = '1s';
             }
@@ -79,7 +80,7 @@ for(let i = 0; i < componentBtn.length; i++){
                     componentBtn[i].style.top = '200px';
                 },300);
                 componentBtn[i].style.left = '58%';
-                cycleImg.style.transform = 'translate(10%, -70%) scale(1.9)';
+                cycleImg.style.transform = 'translate(-10%, -70%) scale(1.9)';
                 cycleImg.style.transition = '1s';
             }
         }
@@ -88,6 +89,7 @@ for(let i = 0; i < componentBtn.length; i++){
             for(let j = 0; j < componentBtn.length; j++){
                 componentBtn[0].style.left = '120px';
                 componentBtn[1].style.right = '150px';
+                componentBtn[i].style.top = '-10px';
                 componentBtn[2].style.left = '0';
                 componentBtn[3].style.left = '48%';
                 componentBtn[3].style.top = '280px';
@@ -100,11 +102,6 @@ for(let i = 0; i < componentBtn.length; i++){
 
 
 const videoImgWrap = document.querySelector('div.video-img');
-// const videoBg = document.querySelector('div.video-bg');
-// const videoPop = document.querySelector('div.video-pop');
-// const video = document.querySelector('div.video-pop > iframe');
-// let setTime;
-
 videoImgWrap.addEventListener('mouseenter', () => {
     setTime = setTimeout(() => {
         window.open('https://www.youtube.com/watch?v=XuEs0jFCV4c', '_blank'); 
