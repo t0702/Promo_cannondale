@@ -53,7 +53,7 @@ div.info-wrap > ul.slide-index > li.slideChk > div.bar {width: 40px; background-
 
 article.slide {width: 54%; min-width: 756px; height:100%; position: relative; }
 article.slide > div.prev,
-article.slide > div.next {position: absolute; top: 50%; width: 30px; height: 30px; background-color: #fff; transform: translateY(-50%); cursor:pointer; transition: .3s;}
+article.slide > div.next {position: absolute; top: 50%; width: 30px; height: 30px; background-color: #fff; transform: translateY(-50%); cursor:pointer; transition: .3s; border: 1px solid #000;}
 article.slide > div.prev {left: 0; opacity: 0; visibility: hidden;}
 article.slide > div.next {right: 0;}
 article.slide > div.prev:hover,
@@ -68,7 +68,7 @@ article.slide > div.next > div:last-child {transform: translate(-50%, -50%) rota
 
 
 article.slide > ul.big-name {position: absolute; top: 100px; left: 50%; transform: translateX(-50%); text-align: center;}
-article.slide > ul.big-name > li {font-size: 200px; font-weight: 900; color: #fff; opacity: 0;}
+article.slide > ul.big-name > li {font-size: 200px; font-weight: 900; color: #00000020; opacity: 0;}
 article.slide > ul.big-name > li:first-child {opacity: 1;}
 
 
@@ -120,7 +120,7 @@ div.magnifier {width: 150px; height: 150px; border: 3px solid #000; border-radiu
 article.info-right {width: 23%; height:100%; display: flex; flex-direction: column; justify-content: space-between;padding-left: 30px; z-index:9;}
 article.info-right > div.custom {display: flex; justify-content: space-between; align-items: center;}
 article.info-right > div.custom > h3 {font-size: 30px; font-weight: 900; font-family: var(--font); white-space:nowrap;}
-article.info-right > div.custom > div.custom-arrow {width: 100px; height: 55px; background-color: #000;  cursor: pointer; position: relative; text-align: center;}
+article.info-right > div.custom > div.custom-arrow {width: 100px; height: 55px; background-color: #000;  cursor: pointer; position: relative; text-align: center; border: 1px solid #000;}
 div.custom-arrow > span { line-height: 55px; font-weight: 900; color: white;}
 div.custom-arrow > div {width: 0; height: 100%; position: absolute; top: 0; left: 0; background-color: var(--yellow);transition: .3s;}
 div.custom-arrow > div:last-child {background-color: #fff; transition-delay: .1s;}
@@ -136,7 +136,7 @@ div.cycle-info2 > div.where {margin: 50px 0;}
 div.cycle-info2 > div > p {line-height: 1.4em; font-size: 16px;}
 
 div.helmet {position: relative; width: fit-content;display: flex; align-items: center; justify-content: center; }
-div.helmet > div.helmet-img {width: 100px; height: 100px; background-color: #fff; border-radius: 50%;display: flex; align-items: center; justify-content: center; margin-right: 10px; }
+div.helmet > div.helmet-img {width: 100px; height: 100px; background-color: #00000010; border-radius: 50%;display: flex; align-items: center; justify-content: center; margin-right: 10px; }
 div.helmet > div.helmet-img > img { width: 75%; }
 div.helmet > ul.color-chip {display: flex; align-self:flex-end; margin-bottom: 5px;}
 div.helmet > ul.color-chip > li { width: 30px; height: 30px;border-radius: 100%; margin-right: 15px; position: relative; cursor:pointer; }
@@ -144,6 +144,7 @@ div.helmet > ul.color-chip > li.blue {background-color: #1187d2; border: 5px sol
 div.helmet > ul.color-chip > li.black {background-color: #000;}
 div.helmet > ul.color-chip > li.gray {background-color: #a0a0a0;}
 div.helmet > ul.color-chip > li.white {background-color: #fff;}
+div.helmet > ul.color-chip > li.white > div.helmet-border {border: 1px solid #00000030; width: 100%; height: 100%; position: absolute;top: 0; left: 0; border-radius: 100%;}
 
 div.helmet > ul.color-chip > li > div.click,
 div.helmet > ul.color-chip > li > div.click2 {width: 30px; height: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;

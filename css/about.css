@@ -15,7 +15,7 @@ div.horizon-wrap {width: calc(50vw + 2600px); height: 100vh; position: fixed; to
 div.video-area {width: 50vw; height: 100%; display: flex; justify-content: center; align-items: center; position: relative; overflow:hidden;}
 
 div.video-wrap {width: 440px; height: 440px;position: relative; transition: .4s; cursor: pointer;}
-div.video-wrap > div.video-line {width: 25vw; position: absolute; top: 50%; left: 100%; transform: translate(-20px,-50%); border-bottom: 5px solid #fff; z-index:2;}
+div.video-wrap > div.video-line {width: 25vw; position: absolute; top: 50%; left: 100%; transform: translate(-20px,-50%); border-bottom: 5px solid #000; z-index:2;}
 
 div.video-wrap:hover {width: 500px; height: 500px;}
 div.video-wrap:hover div.video-border{border: 50px solid black;}
