@@ -39,7 +39,7 @@ for(let i = 0; i < menuLi.length; i++){
 
 
         // 메뉴 목록 클릭 시 메뉴 닫힘.
-        menu.style.right = '-30vw';
+        menu.style.right = ((window.innerWidth - nav.clientWidth) / 2 + 400) * -1 + 'px';
         menuBg.style.opacity = 0;
         menuWrap.style.pointerEvents = "none";
         for(let i = 0; i < hamburgerLi.length; i++){
@@ -60,7 +60,7 @@ for(let i = 0; i < menuLi.length; i++){
 // 메뉴 배경 클릭 시 메뉴 닫힘
 menuBg.addEventListener('click', () => {
     if(isOpen){
-        menu.style.right = '-30vw';
+        menu.style.right = ((window.innerWidth - nav.clientWidth) / 2 + 400) * -1 + 'px';
         menuBg.style.opacity = 0;
         menuWrap.style.pointerEvents = "none";
         for(let i = 0; i < hamburgerLi.length; i++){
