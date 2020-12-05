@@ -140,6 +140,8 @@ window.addEventListener('mousemove', (e) => {
   }
 });
 
+document.addEventListener('mouseleave', () => aboutCursor.style.display = 'none');
+
 /* Moving Animation */
 function movingStart() {
   videoWrap.style.transform = 'scale(.95)';
