@@ -19,6 +19,7 @@ for(let i = 0; i < menuLi.length; i++){
         window.scrollTo(0, 0);
         whatSection(i);
         isAbout ? body.style.overflow = 'auto' : body.style.overflow = 'hidden';
+        if(!isAbout) aboutCursor.style.display = 'none';
         
         // 메뉴 클릭 시 section display 변경
         setTimeout(()=>{

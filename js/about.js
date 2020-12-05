@@ -7,6 +7,11 @@ const aboutP = document.querySelectorAll('div.horizon-wrap p');
 const aboutH3 = document.querySelector('div.horizon-wrap h3');
 const bigTypo = document.querySelector('section.about > h2');
 
+const aboutCursor = document.querySelector('div.about-cursor');
+const aboutCurCir = document.querySelector('div.about-circle');
+const aboutCurLeft = document.querySelector('div.left-arrow');
+const aboutCurRight = document.querySelector('div.right-arrow');
+
 let secGet;
 let horGet;
 let v;
@@ -81,20 +86,43 @@ let startX;
 let scrollLeft;
 let isDown = false;
 
+if(!isAbout) aboutCursor.style.display = 'none';
+
 window.addEventListener('mousedown', (e) => {
   isDown = true;
   startX = e.clientX;
+
   horizonLeft = parseInt(horizonWrap.style.left);
+
+  aboutCurCir.style.width = '30px';
+  aboutCurCir.style.height = '30px';
+  aboutCurLeft.style.opacity = 1;
+  aboutCurLeft.style.visibility = 'visible';
+  aboutCurRight.style.opacity = 1;
+  aboutCurRight.style.visibility = 'visible';
   movingStart();
 });
 window.addEventListener('mouseup', (e) => {
   isDown = false;
+  aboutCurCir.style.width = '40px';
+  aboutCurCir.style.height = '40px';
+  aboutCurLeft.style.opacity = 0;
+  aboutCurLeft.style.visibility = 'hidden';
+  aboutCurRight.style.opacity = 0;
+  aboutCurRight.style.visibility = 'hidden';
   movingEnd();
 });
 window.addEventListener('mousemove', (e) => {
+  const cursorX = e.clientX;
+  const cursorY = e.clientY;
+
   if(!isAbout) return;
+  aboutCursor.style.display = 'block';
+  aboutCursor.style.top = cursorY + 'px';
+  aboutCursor.style.left = cursorX + 'px';
+
   if(!isDown) return;
-  console.log('마우스 드래그 중....');
+  // console.log('마우스 드래그 중....');
   //   console.log('translateX : ', translateX);
   horGet = horizonWrap.getBoundingClientRect(); // 섹션의 바운딩 정보
   secGet = sectionAbout.getBoundingClientRect(); // 호리즌랩의 바운딩 정보
@@ -138,3 +166,23 @@ function movingEnd() {
     aboutP[i].style.transform = 'scale(1)';
   }
 }
+
+
+
+// window.addEventListener('mousemove', (e) => {
+//   const x = e.clientX;
+//   const y = e.clientY;
+//   if(isAbout){
+//     aboutCursor.style.display = 'block';
+//     aboutCursor.style.top = y + 'px';
+//     aboutCursor.style.left = x + 'px';
+
+//     if(isDown){
+//       aboutCurCir.style.width = '30px';
+//       aboutCurCir.style.height = '30px';
+//     } else {
+//       aboutCurCir.style.width = '40px';
+//       aboutCurCir.style.height = '40px';
+//     }
+//   }
+// })
