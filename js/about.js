@@ -31,29 +31,18 @@ window.addEventListener('scroll', () => {
   v = window.scrollY; // 현재 이동되는 스크롤Y값을 받아오고
 
   // console.log(pageYOffset);
+  // console.log(secGet); // 섹션의 바운딩 정보 체크
+  // console.log(horGet); // 호리즌랩의 바운딩 정보 체크
 
-  //   console.log(secGet); // 섹션의 바운딩 정보 체크
-  //   console.log(horGet); // 호리즌랩의 바운딩 정보 체크
-
-  // 개발자 도구로 조작해서 보면 호리즌랩이 가로로 다 이동됐을 때의 translateX는 여러 뷰포트에서 봤을 때 항상 secGet.height - secGet.width의 수치가 나왔어
-
-  //   console.log(secGet.height - secGet.width); // 위 주석에서 했던 것을 체크
-
-  //   console.log(v); // 스크롤을 내렸을 때의 값을 확인하고 이것을 스크롤이 안됐을 때는 0 스크롤이 끝까지 갔을 때 1을 받아와야해
-
-  //   console.log(secGet.height - horGet.height); // 그래서 스크롤이 끝까지 다다랐을때의 값은 secGet.height - horGet.height와 같았어
-
-  // secGet.height - horGet.height은 항상 고정된 값이고
-  // v는 유동적인 값이므로
-
-  // console.log(v / (secGet.height - horGet.height)); // 해당 식으로 써주면 0 ~ 1까지 이동하는 것을 볼 수 있어
-
+  // 호리즌랩이 가로로 다 이동됐을 때의 translateX는 여러 뷰포트에서 봤을 때 항상 secGet.height - secGet.width의 수치
+  // console.log(secGet.height - secGet.width); // 위 주석에서 했던 것을 체크
+  // console.log(v); // 스크롤을 내렸을 때의 값을 확인하고 이것을 스크롤이 안됐을 때는 0 스크롤이 끝까지 갔을 때 1을 받아온다.
+  // console.log(secGet.height - horGet.height); // 그래서 스크롤이 끝까지 다다랐을때의 값은 secGet.height - horGet.height와 같다.
+  // secGet.height - horGet.height은 항상 고정된 값. v는 유동적인 값.
+  // console.log(v / (secGet.height - horGet.height)); // 해당 식으로 써주면 0 ~ 1까지 이동하는 것을 볼 수 있다.
   // 최종적으로 호리즌랩이 가로로 다 이동됐을 때의 translateX값 == secGet.height - secGet.width
   // secGet.height - secGet.width를 0 ~ secGet.height - secGet.width까지 나오게 하려면 여기에
-  // v / (horGet.height - secGet.height)을 곱하면 되니깐
-  // 아래의 식으로 쓸 수 있어
-
-  //   console.log('v', v);
+  // v / (horGet.height - secGet.height)을 곱한다. 아래의 식으로 쓸 수 있다.
   translateX = (secGet.height - secGet.width) * ((v / (secGet.height - horGet.height)) * -1);
 
   horizonWrap.style.left = `${translateX}px`;
@@ -86,7 +75,7 @@ let startX;
 let scrollLeft;
 let isDown = false;
 
-if(!isAbout) aboutCursor.style.display = 'none';
+// if(!isAbout) aboutCursor.style.display = 'none';
 
 window.addEventListener('mousedown', (e) => {
   isDown = true;
@@ -96,10 +85,12 @@ window.addEventListener('mousedown', (e) => {
 
   aboutCurCir.style.width = '30px';
   aboutCurCir.style.height = '30px';
-  aboutCurLeft.style.opacity = 1;
-  aboutCurLeft.style.visibility = 'visible';
-  aboutCurRight.style.opacity = 1;
-  aboutCurRight.style.visibility = 'visible';
+  if(isAbout){
+    aboutCurLeft.style.opacity = 1;
+    aboutCurLeft.style.visibility = 'visible';
+    aboutCurRight.style.opacity = 1;
+    aboutCurRight.style.visibility = 'visible';
+  }
   movingStart();
 });
 window.addEventListener('mouseup', (e) => {
@@ -116,8 +107,8 @@ window.addEventListener('mousemove', (e) => {
   const cursorX = e.clientX;
   const cursorY = e.clientY;
 
-  if(!isAbout) return;
-  aboutCursor.style.display = 'block';
+  // if(!isAbout) return;
+  // aboutCursor.style.display = 'block';
   aboutCursor.style.top = cursorY + 'px';
   aboutCursor.style.left = cursorX + 'px';
 
@@ -141,6 +132,7 @@ window.addEventListener('mousemove', (e) => {
 });
 
 document.addEventListener('mouseleave', () => aboutCursor.style.display = 'none');
+document.addEventListener('mouseenter', () => aboutCursor.style.display = 'block');
 
 /* Moving Animation */
 function movingStart() {
@@ -168,23 +160,3 @@ function movingEnd() {
     aboutP[i].style.transform = 'scale(1)';
   }
 }
-
-
-
-// window.addEventListener('mousemove', (e) => {
-//   const x = e.clientX;
-//   const y = e.clientY;
-//   if(isAbout){
-//     aboutCursor.style.display = 'block';
-//     aboutCursor.style.top = y + 'px';
-//     aboutCursor.style.left = x + 'px';
-
-//     if(isDown){
-//       aboutCurCir.style.width = '30px';
-//       aboutCurCir.style.height = '30px';
-//     } else {
-//       aboutCurCir.style.width = '40px';
-//       aboutCurCir.style.height = '40px';
-//     }
-//   }
-// })

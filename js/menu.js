@@ -20,7 +20,7 @@ for(let i = 0; i < menuLi.length; i++){
         window.scrollTo(0, 0);
         whatSection(i);
         isAbout ? body.style.overflow = 'auto' : body.style.overflow = 'hidden';
-        if(!isAbout) aboutCursor.style.display = 'none';
+        // if(!isAbout) aboutCursor.style.display = 'none';
         
         // 메뉴 클릭 시 section display 변경
         setTimeout(()=>{
@@ -85,7 +85,7 @@ Bi.addEventListener('click', () => {
             pageBlind.classList.remove('pageBlind');
         }, 800);
     } else window.location.reload();
-    
+    whatSection(0);
 })
 
 window.addEventListener('resize', () => {
