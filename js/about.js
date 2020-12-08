@@ -1,3 +1,4 @@
+
 const sectionAbout = document.querySelector('section.about');
 const horizonWrap = document.querySelector('div.horizon-wrap');
 const scrollBar = document.querySelector('div.scroll-bar');

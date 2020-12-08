@@ -1,3 +1,5 @@
+'use strict';
+
 const configureBtns = document.querySelectorAll('div.configure > ul > li');
 let componentBtns = document.querySelectorAll('div.component > ul > li');
 componentBtns = Array.prototype.slice.call(componentBtns);

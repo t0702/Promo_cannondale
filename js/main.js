@@ -1,3 +1,5 @@
+'use strict';
+
 const componentBtn = document.querySelectorAll('div.cycle-wrap > ul > li');
 const componentBtnImg = document.querySelectorAll('div.icon > img');
 const componentName = document.querySelectorAll('div.icon > h2');
@@ -30,7 +32,7 @@ for(let i = 0; i < componentBtn.length; i++){
         if(!isActive){
             isActive = true;
             componentBtn[i].classList.add('active');
-            for(j = 0; j < componentBtn.length; j++){
+            for(let j = 0; j < componentBtn.length; j++){
                 componentBtn[j].style.height = 0;
                 componentBtn[j].style.padding = 0;
             }
@@ -102,6 +104,7 @@ for(let i = 0; i < componentBtn.length; i++){
 
 
 const videoImgWrap = document.querySelector('div.video-img');
+let setTime;
 videoImgWrap.addEventListener('mouseenter', () => {
     setTime = setTimeout(() => {
         window.open('https://www.youtube.com/watch?v=XuEs0jFCV4c', '_blank'); 

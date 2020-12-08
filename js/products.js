@@ -1,4 +1,5 @@
 'use strict';
+
 const articleSlide = document.querySelector('article.slide');
 const slideWrap = document.querySelector('article.slide > ul.slide-wrap');
 const productList = document.querySelectorAll('article.slide > ul.slide-wrap > li');
@@ -378,46 +379,3 @@ detailNext.addEventListener('click', ()=>{
         detailBorder.classList.remove('borderAni');
     },500);
 })
-
-
-
-
-
-
-
-
-
-
-
-// const magCursor = document.querySelector('div.magnifier-cursor');
-// const magnifier = document.querySelector('div.magnifier');
-// let isZoom = false;
-// // enterMagnifier
-// productList[slideCount].addEventListener('mouseenter', magCursorBlock);
-// productList[slideCount].addEventListener('mouseleave', magCursorNone);
-// function magCursorNone(){
-//     magCursor.style.display = 'none';
-// }
-// function magCursorBlock(){
-//     magCursor.style.display = 'block'
-// }
-// productList[slideCount].addEventListener('mousemove', (e) => {
-//     const mouseX = e.clientX;
-//     const mouseY = e.clientY;
-//     magCursor.style.top = mouseY + 'px';
-//     magCursor.style.left = mouseX + 'px';
-//     magnifier.style.top = mouseY + 'px';
-//     magnifier.style.left = mouseX + 'px';
-
-//     productList[slideCount].addEventListener('click', ()=>{
-//         if(!isZoom) {
-//             magCursorNone();
-//             magnifier.style.display = 'block';
-//             isZoom = true;
-//         } else {
-//             magCursorBlock();
-//             magnifier.style.display = 'none';
-//             isZoom = false;
-//         }
-//     })
-// })

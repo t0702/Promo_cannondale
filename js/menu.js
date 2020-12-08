@@ -1,3 +1,5 @@
+'use strict';
+
 const hamburger = document.querySelector('ul.hamburger');
 const hamburgerLi = document.querySelectorAll('ul.hamburger > li');
 const menu = document.querySelector('div.menu');

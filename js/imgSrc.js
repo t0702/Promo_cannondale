@@ -1,3 +1,5 @@
+'use strict';
+
 /* Helmet */
 const helmetSrc = [
     './assets/helmet_blue-2.png', 
