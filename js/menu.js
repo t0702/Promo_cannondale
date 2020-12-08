@@ -7,6 +7,7 @@ const menuBg = document.querySelector('div.menu-bg');
 const cursorCir = document.querySelector('div.cursor-cir');
 const body = document.querySelector('body');
 const nav = document.querySelector('header > nav');
+const Bi = document.querySelector('header > nav > h1');
 
 let isOpen = false;
 let isMain = true;
@@ -25,9 +26,6 @@ for(let i = 0; i < menuLi.length; i++){
         setTimeout(()=>{
             for(let j = 0; j < menuLi.length; j++){
                 section[j].style.display = 'none';
-                // section[j].style.opacity = 0;
-                // section[j].style.transition = '.2s';
-                // section[j].style.pointerEvents = 'none';
             }
             section[i].style.display = 'flex';
         },400);
@@ -35,9 +33,6 @@ for(let i = 0; i < menuLi.length; i++){
         setTimeout(()=>{
             pageBlind.classList.remove('pageBlind');
         }, 800);
-        // section[i].style.opacity = 1;
-        // section[i].style.pointerEvents = 'auto';
-
 
         // 메뉴 목록 클릭 시 메뉴 닫힘.
         menu.style.right = ((window.innerWidth - nav.clientWidth) / 2 + 400) * -1 + 'px';
@@ -77,9 +72,22 @@ menuBg.addEventListener('click', () => {
     }
 })
 
-
-console.log((window.innerWidth - nav.clientWidth)/2);
-
+Bi.addEventListener('click', () => {
+    if(!isMain){
+        setTimeout(()=>{
+            for(let j = 0; j < menuLi.length; j++){
+                section[j].style.display = 'none';
+            }
+            section[0].style.display = 'flex';
+        },400);
+        pageBlind.classList.add('pageBlind');
+        setTimeout(()=>{
+            pageBlind.classList.remove('pageBlind');
+        }, 800);
+    } else {
+        window.location.reload();
+    }
+})
 
 window.addEventListener('resize', () => {
     if(!isOpen){

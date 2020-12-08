@@ -65,7 +65,7 @@ div.page-blind {width: 0vw; height: 100vh; position: fixed; top: 0; right: 0; ba
 /* * header * */
 header {width: 100%; padding: 25px 0; position: fixed; top: 0; left: 0; z-index:99; background-color: transparent; }
 nav {max-width: 1400px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;}
-nav > h1 {position: relative; font-family: var(--font); font-weight: 900; font-size: 20px; display: flex; align-items: center; z-index: 2;}
+nav > h1 {position: relative; font-family: var(--font); font-weight: 900; font-size: 20px; display: flex; align-items: center; z-index: 2; cursor:pointer;}
 nav > h1 > img {width: 30px; margin-right: 10px;}
 nav > ul.hamburger {width: 24px; height: 16px;position: relative; cursor:pointer; z-index: 5;}
 nav > ul.hamburger > li {width: 100%; height: 4px; background-color: #000;  position: absolute; transition:.3s;}
