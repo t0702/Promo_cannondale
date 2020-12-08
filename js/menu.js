@@ -84,9 +84,8 @@ Bi.addEventListener('click', () => {
         setTimeout(()=>{
             pageBlind.classList.remove('pageBlind');
         }, 800);
-    } else {
-        window.location.reload();
-    }
+    } else window.location.reload();
+    
 })
 
 window.addEventListener('resize', () => {
