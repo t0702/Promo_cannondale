@@ -16,10 +16,17 @@ div.left-area > div.video > div.video-img > div.time-bar > div.yellow-bar {width
 div.left-area > div.video > div.video-img:hover > div.time-bar > div.yellow-bar {width: 100%;}
 div.left-area > div.video > div.video-img > div.play {width: 30px; height: 25px; background-color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);}
 
-div.video-pop-wrap {position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index:2; visibility: hidden;}
+/* div.video-pop-wrap {position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index:2; visibility: hidden;}
 div.video-pop-wrap > div.video-bg {width: 100%; height: 100%; background-color: #00000030; position: absolute; top: 0; left: 0; transition: .3s; visibility: hidden; opacity: 0;}
-div.video-pop-wrap > div.video-pop {padding: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, 100%); background-color: #fff; border-radius: 2px; display: flex; justify-content: center; align-items: center; transition: .3s;}
+div.video-pop-wrap > div.video-pop {padding: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, 100%); background-color: #fff; border-radius: 2px; display: flex; justify-content: center; align-items: center; transition: .3s;} */
 
+div.video-pop-wrap {position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;  z-index: 1;
+     visibility: hidden;
+}
+div.video-pop-wrap > div.video-bg{width: 100%; height: 100%; background-color: #00000030; position: absolute; top: 0; left: 0; transition: .3s; opacity: 0;
+     visibility: hidden;
+}
+div.video-pop-wrap > div.video-pop {padding: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, 100%); background-color: #fff; border-radius: 2px; display: flex; justify-content: center; align-items: center; transition: .3s; }
 
 
 

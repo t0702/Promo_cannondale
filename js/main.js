@@ -104,13 +104,54 @@ for(let i = 0; i < componentBtn.length; i++){
 
 
 const videoImgWrap = document.querySelector('div.video-img');
+const videoPopWrap = document.querySelector('div.video-pop-wrap');
+const videoBg = document.querySelector('div.video-bg');
+const videoPop = document.querySelector('div.video-pop');
+
+// youtube API 불러옴
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/player_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// 유튜브 플레이어 변수 설정
+let player;
 let setTime;
 videoImgWrap.addEventListener('mouseenter', () => {
     setTime = setTimeout(() => {
-        window.open('https://www.youtube.com/watch?v=XuEs0jFCV4c', '_blank'); 
+        // window.open('https://www.youtube.com/watch?v=XuEs0jFCV4c', '_blank'); 
+        videoPopWrap.style.visibility = 'visible';
+        videoBg.style.visibility = 'visible';
+        videoBg.style.opacity = 1;
+        videoPop.style.transform = 'translate(-50%, -50%)';
     }, 2000);
+
+    player = new YT.Player('iframe-api', {
+        width: '1000',
+        height: '563',
+        videoId: 'XuEs0jFCV4c',
+        playerVars: {rel: 0},//추천영상 안보여주게 설정
+    });//player셋팅
+    
 })
 videoImgWrap.addEventListener('mouseleave', () => {
     clearTimeout(setTime);
+    
+})
+videoBg.addEventListener('click', () => {
+    videoClose();
 })
 
+function videoClose(){
+    stopVideo();
+    videoPopWrap.style.visibility = 'hidden';
+    videoBg.style.visibility = 'hidden';
+    videoBg.style.opacity = 0;
+    videoPop.style.transform = 'translate(-50%, 100%)';
+    setTimeout(() => {
+        videoPop.innerHTML = '<div id="iframe-api"></div>';
+    }, 300);
+}
+
+function stopVideo(){
+    player.stopVideo();
+}
