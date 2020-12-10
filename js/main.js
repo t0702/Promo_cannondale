@@ -118,7 +118,6 @@ let player;
 let setTime;
 videoImgWrap.addEventListener('mouseenter', () => {
     setTime = setTimeout(() => {
-        // window.open('https://www.youtube.com/watch?v=XuEs0jFCV4c', '_blank'); 
         videoPopWrap.style.visibility = 'visible';
         videoBg.style.visibility = 'visible';
         videoBg.style.opacity = 1;
