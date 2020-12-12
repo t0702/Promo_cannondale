@@ -141,7 +141,6 @@ videoBg.addEventListener('click', () => {
 })
 
 function videoClose(){
-    stopVideo();
     videoPopWrap.style.visibility = 'hidden';
     videoBg.style.visibility = 'hidden';
     videoBg.style.opacity = 0;
@@ -149,8 +148,4 @@ function videoClose(){
     setTimeout(() => {
         videoPop.innerHTML = '<div id="iframe-api"></div>';
     }, 300);
-}
-
-function stopVideo(){
-    player.stopVideo();
 }
